@@ -1,0 +1,109 @@
+@import "./variables.scss";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  > footer, > header {
+    flex-shrink: 0;
+  }
+
+  > main {
+    flex-grow: 1;
+  }
+}
+
+p {
+  white-space: pre-wrap;
+}
+
+.text-extra-large {
+  font-size: 5rem;
+}
+
+hr {
+  width: 100%;
+}
+
+.bg-transparent-25 {
+  background: rgba(0,0,0,0.25);
+}
+
+.bg-primary-gradient {
+  background: radial-gradient($primary, darken($primary, 10));
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+.w-sm {
+  max-width: 576px;
+}
+
+.w-md {
+  width: 768px;
+}
+
+.w-lg {
+  width: 992px;
+}
+
+.w-xl {
+  width: 1200px;
+}
+
+.top-25 {
+  top: 25%;
+}
+
+.top-10 {
+  top: 10%;
+}
+
+.bot-25 {
+  bottom: 25%;
+}
+
+.bot-10 {
+  bottom: 10%;
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-primary,
+.btn-secondary {
+    color: $color-contrast-light;
+
+    &:hover, &:focus {
+        color: $color-contrast-light;
+    }
+}
+
+.btn-outline-primary,
+.btn-outline-secondary {
+    &:hover {
+        color: $color-contrast-light;
+    }
+}

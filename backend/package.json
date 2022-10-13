@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "dev": "run-p dev:**",
+    "dev:server": "strapi develop",
+    "!dev:typegen": "swagger-typescript-api -p src/extensions/documentation/documentation/1.0.0/full_documentation.json -o swagger -n index",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "@strapi/plugin-documentation": "^4.3.8",
+    "@strapi/plugin-i18n": "4.3.8",
+    "@strapi/plugin-users-permissions": "4.3.8",
+    "@strapi/strapi": "4.3.8",
+    "better-sqlite3": "7.4.6",
+    "strapi-plugin-generate-data": "^1.0.16",
+    "strapi-plugin-netlify-deployments": "^1.3.0",
+    "strapi-plugin-placeholder": "^4.3.6"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "3a46d48f-119b-4517-a735-b7bcfae700bc"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

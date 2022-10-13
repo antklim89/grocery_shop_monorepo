@@ -1,0 +1,70 @@
+{
+    "kind": "collectionType",
+    "collectionName": "products",
+    "info": {
+        "singularName": "product",
+        "pluralName": "products",
+        "displayName": "Product",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "richtext",
+            "required": true
+        },
+        "price": {
+            "required": true,
+            "min": 0,
+            "default": 0,
+            "type": "decimal"
+        },
+        "unit": {
+            "type": "enumeration",
+            "enum": [
+                "kilogram",
+                "gram",
+                "liter",
+                "mililiter",
+                "piece",
+                "ton"
+            ],
+            "default": "kilogram",
+            "required": true
+        },
+        "category": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::category.category",
+            "inversedBy": "products"
+        },
+        "country": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::country.country",
+            "inversedBy": "products"
+        },
+        "images": {
+            "type": "media",
+            "multiple": true,
+            "required": true,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "discount": {
+            "type": "integer",
+            "required": true,
+            "min": 0,
+            "max": 100,
+            "default": 0
+        }
+    }
+}

@@ -1,0 +1,11 @@
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 576px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+        width: 100%
+    }
+}

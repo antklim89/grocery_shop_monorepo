@@ -1,0 +1,61 @@
+{
+  "name": "grocery-shop-frontend",
+  "version": "1.0.0",
+  "description": "A Nextjs application",
+  "private": true,
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:client": "next dev",
+    "!dev:tsc": "tsc --preserveWatchOutput --watch --noEmit",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^4.5.8",
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.1",
+    "bootstrap-icons": "^1.9.1",
+    "core-js": "^3.25.1",
+    "mobx": "^6.6.2",
+    "mobx-react-lite": "^3.4.0",
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-markdown": "^8.0.3",
+    "sass": "^1.54.9",
+    "zod": "^3.19.0"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.4",
+    "@types/react": "18.0.19",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "eslint-config-next": "12.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "typescript": "4.8.3"
+  },
+  "author": {
+    "name": "Me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:antklim89/grocery_shop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/antklim89/grocery_shop/issues"
+  },
+  "keywords": [
+    "React",
+    "Nextjs",
+    "Scss",
+    "Bootsrap 5"
+  ],
+  "license": "MIT"
+}
