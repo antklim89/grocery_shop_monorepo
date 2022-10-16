@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { memo } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import StrapiImage from '../utils/StrapiImage';
 
@@ -20,7 +21,9 @@ const Hero = ({ image, title, text }: IHero): JSX.Element => {
                 </div>
                 <div className="col-md-6 col-12 mb-2">
                     <h1 className="text-center fs-1">{title}</h1>
-                    <p className="text-center d-none d-lg-block fs-4">{text}</p>
+                    <ReactMarkdown className="text-center d-none d-lg-block fs-4">
+                        {text}
+                    </ReactMarkdown>
                     <Link passHref href="/product">
                         <button className="btn btn-outline-primary btn-lg d-block mx-auto" type="button">
                             Show Products
