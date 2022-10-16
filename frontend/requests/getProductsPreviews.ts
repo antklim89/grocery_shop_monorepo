@@ -9,7 +9,7 @@ type ProductsPreviewResponse = components['schemas']['ProductListResponse'];
 export async function getProductsPreviews(query: Record<string, unknown> = {}) {
     const { data } = await api.get<ProductsPreviewResponse>('/products', { params: {
         'populate': 'images, country, category',
-        'pagination[pageSize]': 3,
+        'pagination[pageSize]': 10,
         ...query,
     } });
 
