@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { ZodError } from 'zod';
 
 import { AUTH_TOKEN_NAME } from '~/constants';
 import { getMe, login, LoginBody, signup, SignupBody } from '~/requests';
@@ -68,6 +69,11 @@ export default class AuthStore {
             const { jwt, user } = await request();
             this.setUser(user, jwt);
         } catch (error) {
+            if (error instanceof ZodError) {
+                this.setError('Unexpected error. Try again later.');
+                console.error(error);
+                return;
+            }
             if (error instanceof Error) this.setError(error.message);
             throw error;
         } finally {
