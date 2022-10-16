@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 
@@ -55,7 +56,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
         return { props: { newProducts, discountProducts, hero, features } };
     } catch (error) {
-        console.error(error);
+        if (error instanceof AxiosError) console.error(error.response?.data);
         return { notFound: true };
     }
 
