@@ -1,7 +1,7 @@
 
 
-export default ({ env }) => ({
-    "generate-data": {
+export default () => ({
+    'generate-data': {
         enabled: true,
     },
 });
