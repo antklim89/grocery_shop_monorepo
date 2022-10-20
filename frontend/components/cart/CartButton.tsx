@@ -7,9 +7,10 @@ import { useCart } from '~/components/cart/CartProvider';
 
 const CartButton = (props: ButtonHTMLAttributes<HTMLAnchorElement>): JSX.Element => {
     const cart = useCart();
+
     return (
         <Link href="/cart">
-            <a {...props}>
+            <a {...props} className="btn btn-primary bg-dark position-relative mx-1 ">
                 <i className="bi bi-cart " />
                 {cart.cartItems?.length
                     ? (

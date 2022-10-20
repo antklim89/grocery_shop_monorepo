@@ -10,15 +10,14 @@ const Header = (): JSX.Element => {
     useBootstrap('Offcanvas');
 
     return (
-        <header className="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4">
-            <div className="container">
-                <Link passHref href="/">
-                    <a className="navbar-brand me-auto">
-                        GROCERY SHOP
-                    </a>
-                </Link>
-
-                <nav>
+        <header >
+            <nav className="navbar navbar-dark bg-dark navbar-expand-lg shadow mb-4">
+                <div className="container">
+                    <Link passHref href="/">
+                        <a className="navbar-brand me-auto">
+                            GROCERY SHOP
+                        </a>
+                    </Link>
                     <button
                         aria-controls="offcanvasNavbar"
                         className="navbar-toggler"
@@ -35,6 +34,7 @@ const Header = (): JSX.Element => {
                         tabIndex={-1}
                     >
                         <div className="offcanvas-header">
+                            <span className="offcanvas-title" id="offcanvasNavbarLabel" />
                             <button
                                 aria-label="Close"
                                 className="btn-close"
@@ -42,14 +42,13 @@ const Header = (): JSX.Element => {
                                 type="button"
                             />
                         </div>
-                        <div className="offcanvas-body">
+                        <div className="offcanvas-body mx-1">
                             <HeaderLinks />
                         </div>
                     </div>
-                </nav>
-
-                <CartButton className="btn btn-primary bg-dark position-relative align-self-end me-lg-0 me-4" />
-            </div>
+                    <CartButton />
+                </div>
+            </nav>
         </header>
     );
 };

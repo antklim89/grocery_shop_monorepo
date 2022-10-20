@@ -18,7 +18,7 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
     const auth = useAuth();
 
     return (
-        <ul className={cls('navbar-nav m-0 w-100', className)}>
+        <ul className={cls('navbar-nav justify-content-end flex-grow-1 pe-3', className)}>
             <li className="nav-item">
                 <Link passHref href="/">
                     <a className={`nav-link ${route === '/' ? 'active' : ''}`} >
