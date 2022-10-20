@@ -9,9 +9,9 @@ import { IHero } from '~/types';
 
 const Hero = ({ image, title, text }: IHero): JSX.Element => {
     return (
-        <section className="container">
+        <section className="container-md">
             <div className="row">
-                <div className="col-md-6 col-12 mb-2">
+                <div className="col-md-6 col-12 p-0 p-md-1 mb-2">
                     <StrapiImage
                         alt="hero"
                         height={200}
@@ -19,7 +19,7 @@ const Hero = ({ image, title, text }: IHero): JSX.Element => {
                         width={400}
                     />
                 </div>
-                <div className="col-md-6 col-12 mb-2">
+                <div className="col-md-6 col-12 p-0 p-md-1 mb-2">
                     <h1 className="text-center fs-1">{title}</h1>
                     <ReactMarkdown className="text-center d-none d-lg-block fs-4">
                         {text}
