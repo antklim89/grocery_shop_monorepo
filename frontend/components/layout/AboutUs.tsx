@@ -1,5 +1,4 @@
-import ReactMarkdown from 'react-markdown';
-
+import LazyReactMarkdown from '~/components/utils/LazyReactMarkdown';
 import StrapiImage from '~/components/utils/StrapiImage';
 import { IAbout } from '~/types';
 
@@ -18,7 +17,7 @@ const AboutUs = ({ image, body }: IAbout): JSX.Element => {
                     />
                 </div>
                 <div className="col-lg">
-                    <ReactMarkdown>{body}</ReactMarkdown>
+                    <LazyReactMarkdown>{body}</LazyReactMarkdown>
                 </div>
             </div>
         </section>

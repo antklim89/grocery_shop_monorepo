@@ -1,5 +1,4 @@
-import ReactMarkdown from 'react-markdown';
-
+import LazyReactMarkdown from '~/components/utils/LazyReactMarkdown';
 import StrapiImage from '~/components/utils/StrapiImage';
 import { IFeature } from '~/types';
 
@@ -26,7 +25,7 @@ const Features = ({ features }: FeaturesProps): JSX.Element => {
                                 />
                                 <div className="card-body d-flex flex-column">
                                     <h3 className="card-title text-center text-uppercase">{title}</h3>
-                                    <ReactMarkdown className="card-text mt-auto">{text}</ReactMarkdown>
+                                    <LazyReactMarkdown className="card-text mt-auto">{text}</LazyReactMarkdown>
                                 </div>
                             </section>
                         </div>

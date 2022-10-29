@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { memo } from 'react';
-import ReactMarkdown from 'react-markdown';
 
-import StrapiImage from '../utils/StrapiImage';
-
+import LazyReactMarkdown from '~/components/utils/LazyReactMarkdown';
+import StrapiImage from '~/components/utils/StrapiImage';
 import { IHero } from '~/types';
 
 
@@ -21,9 +20,9 @@ const Hero = ({ image, title, text }: IHero): JSX.Element => {
                 </div>
                 <div className="col-md-6 col-12 p-0 p-md-1 mb-2">
                     <h1 className="text-center fs-1">{title}</h1>
-                    <ReactMarkdown className="text-center d-none d-lg-block fs-4">
+                    <LazyReactMarkdown className="text-center d-none d-lg-block fs-4">
                         {text}
-                    </ReactMarkdown>
+                    </LazyReactMarkdown>
                     <Link passHref href="/product">
                         <button className="btn btn-outline-primary btn-lg d-block mx-auto" type="button">
                             Show Products
