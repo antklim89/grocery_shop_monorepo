@@ -18,7 +18,7 @@ const Product: FC<IProduct> = (product) => {
                     <ProductOrder {...product} />
                 </div>
             </div>
-            <ReactMarkdown>{product.description}</ReactMarkdown>
+            <ReactMarkdown className="my-3">{product.description}</ReactMarkdown>
         </article>
     );
 };
