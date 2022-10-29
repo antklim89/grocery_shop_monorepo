@@ -4,7 +4,6 @@ import { FC, FormEvent, useEffect, useState } from 'react';
 
 import { useAuth } from '~/components/auth/AuthProvider';
 import Loading from '~/components/utils/Loading';
-import styles from '~/styles/Auth.module.scss';
 
 
 const Auth: FC<{isSignup?: boolean}> = ({ isSignup }) => {
@@ -37,7 +36,7 @@ const Auth: FC<{isSignup?: boolean}> = ({ isSignup }) => {
         <div className="container">
             <h1 className="text-center text-primary">{isSignup ? 'Sign Up' : 'Log In'}
             </h1>
-            <form className={`p-5 border ${styles.form}`} onSubmit={handleLogin}>
+            <form className="p-5 border" onSubmit={handleLogin}>
                 {auth.error
                     ? (
                         <div className="alert alert-danger" role="alert">
