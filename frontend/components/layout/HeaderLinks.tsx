@@ -19,21 +19,21 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
 
     return (
         <ul className={cls('navbar-nav justify-content-end flex-grow-1 pe-3', className)}>
-            <li className="nav-item">
+            <li className="nav-item" data-bs-dismiss="offcanvas">
                 <Link passHref href="/">
                     <a className={`nav-link ${route === '/' ? 'active' : ''}`} >
                         HOME
                     </a>
                 </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" data-bs-dismiss="offcanvas">
                 <Link passHref href="/product">
                     <a className={`nav-link ${route === '/products' ? 'active' : ''}`} >
                         PRODUCTS
                     </a>
                 </Link>
             </li>
-            <li className="nav-item me-auto">
+            <li className="nav-item me-auto" data-bs-dismiss="offcanvas">
                 <Link passHref href="/about">
                     <a className={`nav-link ${route === '/about' ? 'active' : ''}`}>
                         ABOUT
@@ -42,7 +42,7 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
             </li>
             <ProtectedComponent
                 fallback={(
-                    <li className="nav-item">
+                    <li className="nav-item" data-bs-dismiss="offcanvas">
                         <button className="btn btn-link nav-link mx-5" type="button">
                             <Loading loading size="sm" />
                         </button>
@@ -50,14 +50,14 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                 )}
                 render={(
                     <>
-                        <li className="nav-item">
+                        <li className="nav-item" data-bs-dismiss="offcanvas">
                             <Link href="/signup">
                                 <a className={`nav-link ${route === '/signup' ? 'active' : ''}`} >
                                     Sign Up
                                 </a>
                             </Link>
                         </li>
-                        <li className="nav-item me-5">
+                        <li className="nav-item me-5" data-bs-dismiss="offcanvas">
                             <Link href="/login">
                                 <a className={`nav-link ${route === '/login' ? 'active' : ''}`} >
                                     Log In
