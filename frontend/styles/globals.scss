@@ -10,6 +10,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+
 a {
   text-decoration: none;
   cursor: pointer;
@@ -94,16 +95,11 @@ body {
 .btn-secondary:disabled,
 .btn-primary,
 .btn-secondary {
-    color: $color-contrast-light;
-
-    &:hover, &:focus {
-        color: $color-contrast-light;
-    }
+  --bs-btn-color: white;
+  --bs-btn-hover-color: white;
 }
 
 .btn-outline-primary,
 .btn-outline-secondary {
-    &:hover {
-        color: $color-contrast-light;
-    }
+  --bs-btn-hover-color: white;
 }
