@@ -4,9 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "dev": "run-p dev:**",
-    "dev:server": "strapi develop",
-    "!dev:typegen": "swagger-typescript-api -p src/extensions/documentation/documentation/1.0.0/full_documentation.json -o swagger -n index",
+    "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
