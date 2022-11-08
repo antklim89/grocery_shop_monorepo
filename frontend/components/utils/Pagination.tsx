@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
+import { PAGINATION_QUERY_NAME } from '~/constants';
 import { IPagination } from '~/types';
 import { cls, getSearchParams } from '~/utils';
 
@@ -9,29 +10,24 @@ interface PaginationProps {
     pagination: IPagination
 }
 
-export const QUERY_NAME = 'pagination[page]';
 
 const Pagination = ({ pagination: { page = 1, pageCount } }: PaginationProps) => {
     const { replace, query } = useRouter();
 
-    useEffect(() => {
-        if (page > pageCount) replace('?pagination[page]=1');
-    }, [page, pageCount]);
-
     const getNextPage = useCallback(() => {
         const nextPage = Math.min(page + 1, pageCount);
-        const prevPage = getSearchParams({ queryName: QUERY_NAME, query, value: nextPage, removeByValue: '1' });
+        const prevPage = getSearchParams({ queryName: PAGINATION_QUERY_NAME, query, value: nextPage, removeByValue: '1' });
         replace(prevPage);
     }, [page]);
 
     const getPrevPage = useCallback(() => {
         const prevPage = Math.max(page - 1, 1);
-        const nextPage = getSearchParams({ queryName: QUERY_NAME, query, value: prevPage, removeByValue: '1' });
+        const nextPage = getSearchParams({ queryName: PAGINATION_QUERY_NAME, query, value: prevPage, removeByValue: '1' });
         replace(nextPage);
     }, [page]);
 
     const getPage = (value: number) => () => {
-        const pageToGo = getSearchParams({ queryName: QUERY_NAME, query, value, removeByValue: '1' });
+        const pageToGo = getSearchParams({ queryName: PAGINATION_QUERY_NAME, query, value, removeByValue: '1' });
         replace(pageToGo);
     };
 

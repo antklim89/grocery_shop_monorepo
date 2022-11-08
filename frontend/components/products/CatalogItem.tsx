@@ -11,13 +11,13 @@ interface Props extends HTMLAttributes<HTMLAnchorElement> {
 }
 
 const CatalogItem: FC<Props> = ({ queryName, value, className, children, ...props }) => {
-    const { query, pathname } = useRouter();
+    const { query } = useRouter();
 
     const params = getSearchParams({ queryName, query, value, removeByValue: query[queryName] });
     const isActive = query[queryName] === value;
 
     return (
-        <Link replace href={`${pathname}${params}`} >
+        <Link replace href={`/product${params}`} >
             <a {...props} className={cls(className, isActive && 'active')} >
                 { children || value }
             </a>

@@ -1,33 +1,23 @@
 import { useRouter } from 'next/router';
-import { FC, HTMLAttributes, useEffect, useRef, useState } from 'react';
+import { FC, HTMLAttributes, useRef, useState } from 'react';
 
-import { cls } from '~/utils';
+import { SEARCH_QUERY_NAME } from '~/constants';
+import { cls, getSearchParams } from '~/utils';
 
-
-const QUERY_NAME = 'filters[name][$contains]';
 
 const SearchProducts: FC<HTMLAttributes<HTMLInputElement>> = ({ className, ...props }) => {
-    const [searchValue, setSearchValue] = useState('');
-    const { replace, query, pathname } = useRouter();
+    const { replace, query } = useRouter();
+    const [searchValue, setSearchValue] = useState(query[SEARCH_QUERY_NAME] as string || '');
     const prevSearchValue = useRef<string|null>(null);
 
     const handleSearch = async () => {
         if (searchValue === prevSearchValue.current) return;
-        const params = new URLSearchParams(query as Record<string, string> || '');
 
-        if (searchValue.length > 0) params.set(QUERY_NAME, searchValue);
-        else params.delete(QUERY_NAME);
-
-        if (params.toString().length > 0) replace(`${pathname}?${params}`);
-        else replace(pathname);
+        const params = getSearchParams({ queryName: SEARCH_QUERY_NAME, query, value: searchValue, removeByValue: '' });
+        replace(`/product${params}`);
 
         prevSearchValue.current = searchValue;
     };
-
-    useEffect(() => {
-        if (query.search === searchValue || typeof query.search === 'object') return;
-        setSearchValue(query.search || '');
-    }, [query.search]);
 
     return (
         <div className="position-relative">

@@ -4,6 +4,7 @@ import { FC } from 'react';
 
 import CatalogItem from './CatalogItem';
 
+import { CATEGORY_QUERY_NAME, COUNTRY_QUERY_NAME } from '~/constants';
 import { ICatalogItem } from '~/types';
 import { cls } from '~/utils';
 
@@ -38,7 +39,7 @@ const Catalog: FC<Props> = ({ categories, countries }) => {
                     <CatalogItem
                         className="list-group-item list-group-item-action text-uppercase"
                         key={category.id}
-                        queryName="filters[category][name][$eq]"
+                        queryName={CATEGORY_QUERY_NAME}
                         value={category.name}
                     />
                 ))}
@@ -49,7 +50,7 @@ const Catalog: FC<Props> = ({ categories, countries }) => {
                     <CatalogItem
                         className="list-group-item list-group-item-action text-uppercase"
                         key={country.id}
-                        queryName="filters[country][name][$eq]"
+                        queryName={COUNTRY_QUERY_NAME}
                         value={country.name}
                     />
                 ))}

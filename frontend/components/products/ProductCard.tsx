@@ -8,6 +8,7 @@ import CatalogItem from './CatalogItem';
 import { useCart } from '~/components/cart/CartProvider';
 import Price from '~/components/utils/Price';
 import StrapiImage from '~/components/utils/StrapiImage';
+import { CATEGORY_QUERY_NAME, COUNTRY_QUERY_NAME } from '~/constants';
 import { IProductPreview } from '~/types';
 
 
@@ -31,12 +32,12 @@ const ProductCard: FC<IProductPreview> = (product) => {
                 <div className="card-header m-0 p-1 text-uppercase breadcrumb d-flex justify-content-center">
                     <CatalogItem
                         className="breadcrumb-item"
-                        queryName="category"
+                        queryName={CATEGORY_QUERY_NAME}
                         value={category.name}
                     />
                     <CatalogItem
                         className="breadcrumb-item"
-                        queryName="country"
+                        queryName={COUNTRY_QUERY_NAME}
                         value={country.name}
                     />
                 </div>

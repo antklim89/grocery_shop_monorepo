@@ -1,3 +1,8 @@
+export const CATEGORY_QUERY_NAME = 'filters[category][name][$eq]';
+export const COUNTRY_QUERY_NAME = 'filters[country][name][$eq]';
+export const SEARCH_QUERY_NAME = 'filters[name][$contains]';
+export const SORT_QUERY_NAME = 'sort';
+export const PAGINATION_QUERY_NAME = 'pagination[page]';
 
 
 export const DEFAULT_DESCRIPTION = process.env.DEFAULT_DESCRIPTION || 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo asperiores id nulla fugiat eius nostrum tempore alias illum deleniti, recusandae eligendi consectetur, dolor quisquam. Quibusdam eligendi at corrupti distinctio magnam voluptas quisquam repellat voluptatibus laudantium asperiores! Rerum error non, expedita amet repudiandae nisi incidunt, odit nostrum quo illum, perferendis commodi.';
