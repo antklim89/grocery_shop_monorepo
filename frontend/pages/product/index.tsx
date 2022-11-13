@@ -33,9 +33,15 @@ const ProductsPage = ({ products, categories, countries, pagination }: ProductsP
 };
 
 export const getServerSideProps: GetServerSideProps<ProductsPageProps> = async ({ query }) => {
-    const { products, pagination } = await getProductsPreviews(query);
-    const categories = await getCategories();
-    const countries = await getCounties();
+    const [
+        { products, pagination },
+        categories,
+        countries,
+    ] = await Promise.all([
+        getProductsPreviews(query),
+        getCategories(),
+        getCounties(),
+    ]);
 
     return { props: { products, categories, countries, pagination } };
 };

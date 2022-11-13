@@ -41,18 +41,25 @@ const HomePage: NextPage<Props> = ({ newProducts, discountProducts, hero, featur
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
     try {
-        const { products: newProducts } = await getProductsPreviews({
-            'pagination[page]': 0,
-            'pagination[pageSize]': 6,
-            'sort': 'createdAt',
-        });
-        const { products: discountProducts } = await getProductsPreviews({
-            'pagination[page]': 0,
-            'pagination[pageSize]': 6,
-            'sort': 'discount:desc',
-        });
-        const hero = await getHero();
-        const features = await getFeatures();
+        const [
+            { products: newProducts },
+            { products: discountProducts },
+            hero,
+            features,
+        ] = await Promise.all([
+            getProductsPreviews({
+                'pagination[page]': 0,
+                'pagination[pageSize]': 6,
+                'sort': 'createdAt',
+            }),
+            getProductsPreviews({
+                'pagination[page]': 0,
+                'pagination[pageSize]': 6,
+                'sort': 'discount:desc',
+            }),
+            getHero(),
+            getFeatures(),
+        ]);
 
         return { props: { newProducts, discountProducts, hero, features } };
     } catch (error) {

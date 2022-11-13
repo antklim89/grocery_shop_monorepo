@@ -24,8 +24,13 @@ const AboutPage = ({ about, features }: Props): JSX.Element => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const about = await getAbout();
-    const features = await getFeatures();
+    const [
+        about,
+        features,
+    ] = await Promise.all([
+        getAbout(),
+        getFeatures(),
+    ]);
 
     return { props: { about, features }, revalidate: 120 };
 };
