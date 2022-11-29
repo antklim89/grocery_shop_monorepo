@@ -89,13 +89,13 @@ const Auth: FC<{isSignup?: boolean}> = ({ isSignup }) => {
                         or{' '}
                         {isSignup
                             ? (
-                                <Link passHref href="/login">
-                                    <a className="text-decoration-underline">Log In</a>
+                                <Link passHref className="text-decoration-underline" href="/login">
+                                    Log In
                                 </Link>
                             )
                             : (
-                                <Link passHref href="/signup">
-                                    <a className="text-decoration-underline">Sign Up</a>
+                                <Link passHref className="text-decoration-underline" href="/signup">
+                                    Sign Up
                                 </Link>
                             )}
                     </p>

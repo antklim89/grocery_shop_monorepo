@@ -17,7 +17,7 @@ const CartListItem: FC<{cartItem: CartItemStore}> = ({ cartItem }) => {
         <section className="row list-group-item d-flex">
             <div className="col-lg-8 col-12">
                 <Link passHref href={`/product/${product.id}`}>
-                    <a><h2 className="mb-1">{product.name}</h2></a>
+                    <h2 className="mb-1">{product.name}</h2>
                 </Link>
                 <small>
                     <Price

@@ -17,10 +17,11 @@ const CatalogItem: FC<Props> = ({ queryName, value, className, children, ...prop
     const isActive = query[queryName] === value;
 
     return (
-        <Link replace href={`/product${params}`} >
-            <a {...props} className={cls(className, isActive && 'active')} >
-                { children || value }
-            </a>
+        <Link
+            replace href={`/product${params}`} {...props}
+            className={cls(className, isActive && 'active')}
+        >
+            { children || value }
         </Link>
     );
 };

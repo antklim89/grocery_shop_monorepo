@@ -25,16 +25,16 @@ const SortProducts: FC<Props> = ({ value, children, className, isDefault, ...pro
     const isActive = currentValue ? currentValue === value : isDefault;
 
     return (
-        <Link href={params.toString().length === 0
-            ? '/product'
-            : `/product?${params}`}
+        <Link
+            className={cls(className, isActive && 'active')}
+            href={params.toString().length === 0
+                ? '/product'
+                : `/product?${params}`} {...props}
         >
-            <a className={cls(className, isActive && 'active')} {...props}>
-                {children || value}
-                {(currentValue ? (direction === 'asc' && currentValue === value) : isDefault)
-                    ? <i className="bi bi-chevron-up mx-1" />
-                    : <i className="bi bi-chevron-down mx-1" />}
-            </a>
+            {children || value}
+            {(currentValue ? (direction === 'asc' && currentValue === value) : isDefault)
+                ? <i className="bi bi-chevron-up mx-1" />
+                : <i className="bi bi-chevron-down mx-1" />}
         </Link>
     );
 };

@@ -64,8 +64,8 @@ const ProductCard: FC<IProductPreview> = (product) => {
                             unit={unit}
                         />
                     </div>
-                    <Link href={`/product/${id}`}>
-                        <a className="btn btn-outline-primary">View Details</a>
+                    <Link className="btn btn-outline-primary" href={`/product/${id}`}>
+                        View Details
                     </Link>
                     <button
                         className="btn btn-primary my-2"

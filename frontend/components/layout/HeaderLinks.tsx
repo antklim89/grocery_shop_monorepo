@@ -20,24 +20,18 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
     return (
         <ul className={cls('navbar-nav justify-content-end flex-grow-1 pe-3', className)}>
             <li className="nav-item" data-bs-dismiss="offcanvas">
-                <Link passHref href="/">
-                    <a className={`nav-link ${route === '/' ? 'active' : ''}`} >
-                        HOME
-                    </a>
+                <Link passHref className={`nav-link ${route === '/' ? 'active' : ''}`} href="/">
+                    HOME
                 </Link>
             </li>
             <li className="nav-item" data-bs-dismiss="offcanvas">
-                <Link passHref href="/product">
-                    <a className={`nav-link ${route === '/products' ? 'active' : ''}`} >
-                        PRODUCTS
-                    </a>
+                <Link passHref className={`nav-link ${route === '/products' ? 'active' : ''}`} href="/product">
+                    PRODUCTS
                 </Link>
             </li>
             <li className="nav-item me-auto" data-bs-dismiss="offcanvas">
-                <Link passHref href="/about">
-                    <a className={`nav-link ${route === '/about' ? 'active' : ''}`}>
-                        ABOUT
-                    </a>
+                <Link passHref className={`nav-link ${route === '/about' ? 'active' : ''}`} href="/about">
+                    ABOUT
                 </Link>
             </li>
             <ProtectedComponent
@@ -51,17 +45,13 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                 render={(
                     <>
                         <li className="nav-item" data-bs-dismiss="offcanvas">
-                            <Link href="/signup">
-                                <a className={`nav-link ${route === '/signup' ? 'active' : ''}`} >
-                                    Sign Up
-                                </a>
+                            <Link className={`nav-link ${route === '/signup' ? 'active' : ''}`} href="/signup">
+                                Sign Up
                             </Link>
                         </li>
                         <li className="nav-item me-5" data-bs-dismiss="offcanvas">
-                            <Link href="/login">
-                                <a className={`nav-link ${route === '/login' ? 'active' : ''}`} >
-                                    Log In
-                                </a>
+                            <Link className={`nav-link ${route === '/login' ? 'active' : ''}`} href="/login">
+                                Log In
                             </Link>
                         </li>
                     </>
@@ -70,10 +60,8 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                 <li className="nav-item me-1">
                     <Observer>
                         {() => (
-                            <Link href="/profile">
-                                <a className="nav-link btn btn-link" >
-                                    {auth.user?.username || ''}
-                                </a>
+                            <Link className="nav-link btn btn-link" href="/profile">
+                                {auth.user?.username || ''}
                             </Link>
                         )}
                     </Observer>

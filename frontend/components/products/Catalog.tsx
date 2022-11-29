@@ -20,17 +20,17 @@ const Catalog: FC<Props> = ({ categories, countries }) => {
     return (
         <nav>
             <ul className="list-group mb-4">
-                <Link href="/product">
-                    <a
-                        className={cls(
-                            'list-group-item',
-                            'list-group-item-action',
-                            (!query.category || !query.country) && 'active',
-                        )}
-                        role="listitem"
-                    >
-                        <b>All</b>
-                    </a>
+                <Link
+                    className={cls(
+                        'list-group-item',
+                        'list-group-item-action',
+                        (!query.category || !query.country) && 'active',
+                    )}
+                    href="/product"
+                    role="listitem"
+
+                >
+                    <b>All</b>
                 </Link>
             </ul>
             <ul className="list-group mb-4">

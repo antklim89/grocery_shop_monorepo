@@ -13,10 +13,8 @@ const Header = (): JSX.Element => {
         <header >
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg shadow mb-4">
                 <div className="container">
-                    <Link passHref href="/">
-                        <a className="navbar-brand me-auto">
-                            GROCERY SHOP
-                        </a>
+                    <Link passHref className="navbar-brand me-auto" href="/">
+                        GROCERY SHOP
                     </Link>
                     <button
                         aria-controls="offcanvasNavbar"

@@ -42,17 +42,13 @@ const CartList = (): JSX.Element => {
                 </div>
                 <ProtectedComponent
                     render={(
-                        <Link href="/login">
-                            <a className="btn btn-primary btn-lg align-self-center">
-                                Login to confirm order...
-                            </a>
+                        <Link className="btn btn-primary btn-lg align-self-center" href="/login">
+                            Login to confirm order...
                         </Link>
                     )}
                 >
-                    <Link href="/order">
-                        <a className="btn btn-primary btn-lg align-self-center">
-                            Create Order
-                        </a>
+                    <Link className="btn btn-primary btn-lg align-self-center" href="/order">
+                        Create Order
                     </Link>
                 </ProtectedComponent>
             </div>
