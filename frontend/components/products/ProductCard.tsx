@@ -44,7 +44,7 @@ const ProductCard: FC<IProductPreview> = (product) => {
                 <div className="position-relative">
                     <StrapiImage
                         alt={name}
-                        className="card-img-top img-fluid"
+                        className="card-img-top"
                         height={220}
                         image={images[0]}
                         width={400}
