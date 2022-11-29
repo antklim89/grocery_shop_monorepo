@@ -13,12 +13,13 @@ const Hero = ({ image, title, text }: IHero): JSX.Element => {
                 <div className="col-md-6 col-12 p-0 p-md-1 mb-2">
                     <StrapiImage
                         alt="hero"
-                        height={200}
+                        className="img-fluid"
+                        height={400}
                         image={image}
-                        width={400}
+                        width={800}
                     />
                 </div>
-                <div className="col-md-6 col-12 p-0 p-md-1 mb-2">
+                <div className="col-md-6 col-12 p-0 p-md-1 mb-2 d-flex flex-column justify-content-center">
                     <h1 className="text-center fs-1">{title}</h1>
                     <LazyReactMarkdown className="text-center d-none d-lg-block fs-4">
                         {text}
