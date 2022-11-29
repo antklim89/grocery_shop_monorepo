@@ -32,7 +32,7 @@ const HomePage: NextPage<Props> = ({ newProducts, discountProducts, hero, featur
             </div>
             <div className="text-center my-3">
                 <Link className="btn btn-primary" href="/product">
-                    <a>Shom more</a>
+                    Shom more
                 </Link>
             </div>
         </>
