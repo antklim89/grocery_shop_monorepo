@@ -1,0 +1,46 @@
+{
+  "name": "Authenticated",
+  "description": "Default role given to authenticated user.",
+  "type": "authenticated",
+  "permissions": [
+    {
+      "action": "api::about.about.find"
+    },
+    {
+      "action": "api::category.category.find"
+    },
+    {
+      "action": "api::category.category.findOne"
+    },
+    {
+      "action": "api::country.country.find"
+    },
+    {
+      "action": "api::country.country.findOne"
+    },
+    {
+      "action": "api::feature.feature.find"
+    },
+    {
+      "action": "api::feature.feature.findOne"
+    },
+    {
+      "action": "api::hero.hero.find"
+    },
+    {
+      "action": "api::product.product.find"
+    },
+    {
+      "action": "api::product.product.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.auth.changePassword"
+    },
+    {
+      "action": "plugin::users-permissions.user.me"
+    },
+    {
+      "action": "plugin::users-permissions.user.update"
+    }
+  ]
+}
