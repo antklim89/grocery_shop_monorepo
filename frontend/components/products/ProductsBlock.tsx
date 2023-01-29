@@ -63,8 +63,8 @@ const ProductsBlock: FC<ProductsPageProps> = ({ products, categories, countries,
                         <SortProducts className="breadcrumb-item" value="price">
                             Sort by Price
                         </SortProducts>
-                        <SortProducts isDefault className="breadcrumb-item" value="id">
-                            Sort by Novelty
+                        <SortProducts className="breadcrumb-item" value="discount">
+                            Sort by Discount
                         </SortProducts>
                     </div>
 
