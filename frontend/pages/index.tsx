@@ -23,11 +23,13 @@ const HomePage: NextPage<Props> = ({ newProducts, discountProducts, hero, featur
         <>
             <Seo title="Home" />
             <Hero {...hero} />
-            <div className="container">
+            <div className="container mt-4">
+                <h2 className="text-center">New Products</h2>
                 <ProductsList products={newProducts} />
             </div>
             <Features features={features} />
-            <div className="container">
+            <div className="container mt-4">
+                <h2 className="text-center">Big Discount</h2>
                 <ProductsList products={discountProducts} />
             </div>
             <div className="text-center my-3">
