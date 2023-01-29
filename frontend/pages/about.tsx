@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 
-import AboutUs from '~/components/layout/AboutUs';
+import About from '~/components/layout/AboutUs';
 import Features from '~/components/layout/Features';
 import Seo from '~/components/utils/Seo';
 import { getAbout } from '~/requests';
@@ -17,7 +17,7 @@ const AboutPage = ({ about, features }: Props): JSX.Element => {
     return (
         <>
             <Seo title="About Us" />
-            <AboutUs {...about} />
+            <About {...about} />
             <Features features={features} />
         </>
     );

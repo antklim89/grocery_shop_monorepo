@@ -24,7 +24,6 @@ const StrapiImage: FC<Props> = ({
             blurDataURL={image.placeholder}
             placeholder="blur"
             src={`${API_URL}${image.url}`}
-            // style={{ objectFit: 'cover' }}
             {...props}
         />
     );

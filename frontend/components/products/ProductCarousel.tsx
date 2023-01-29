@@ -25,7 +25,6 @@ const ProductCarousel: FC<Props> = ({ images }) => {
                             alt={`carousel-image-${index + 1}`}
                             height={720}
                             image={image}
-                            style={{ objectFit: 'cover' }}
                             width={1200}
                         />
                     </div>

@@ -20,7 +20,6 @@ const Features = ({ features }: FeaturesProps): JSX.Element => {
                                     className="card-img-top"
                                     height={198}
                                     image={image}
-                                    objectFit="cover"
                                     width={400}
                                 />
                                 <div className="card-body d-flex flex-column">

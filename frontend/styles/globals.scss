@@ -19,6 +19,22 @@ a {
 * {
   box-sizing: border-box;
 }
+body {
+  overflow-x: hidden;
+}
+
+hr {
+  width: 100%;
+}
+
+p {
+  white-space: pre-wrap;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
 
 #__next {
   display: flex;
@@ -34,16 +50,8 @@ a {
   }
 }
 
-p {
-  white-space: pre-wrap;
-}
-
 .text-extra-large {
   font-size: 5rem;
-}
-
-hr {
-  width: 100%;
 }
 
 .bg-transparent-25 {
@@ -53,11 +61,6 @@ hr {
 .bg-primary-gradient {
   background: radial-gradient($primary, darken($primary, 10));
 }
-
-body {
-  overflow-x: hidden;
-}
-
 
 .w-sm {
   max-width: 576px;
