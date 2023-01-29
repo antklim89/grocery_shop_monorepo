@@ -1,10 +1,12 @@
+import fs from 'fs';
+import { resolve } from 'path';
+
 import { faker } from '@faker-js/faker';
-import { Strapi } from '@strapi/strapi';
-import { times, sample, sampleSize, random } from 'lodash';
+import { times, sample, sampleSize, random, shuffle } from 'lodash';
 
 
 const FEATURES_COUNT = 3;
-const PRODUCTS_COUNT = 100;
+const PRODUCTS_COUNT = 200;
 const categoriesList = ['Vegetables', 'Fruits', 'Meat', 'Bakery', 'Milk products', 'Ready-made food'];
 const countriesList = ['Russia', 'USA', 'Egypt', 'Turkey', 'Azerbaijan', 'China', 'Cuba', 'Greece', 'India', 'Mexico'];
 
@@ -15,14 +17,40 @@ export interface Image {
 }
 
 
-export async function generateData(strapi: Strapi) {
-    const images = await strapi.plugins.upload.services.upload.findMany({});
+export async function generateData() {
+    const images = await generateImages();
     await generateFeatures(images);
     const countries = await generateCountries();
     const categories = await generateCategories();
     await generateProducts(images, categories, countries);
     await generateAbout(images);
     await generateHero(images);
+}
+
+async function generateImages() {
+    const prevImages: Image[] = await strapi.plugins.upload.services.upload.findMany({});
+    if (prevImages.length > 0) return prevImages;
+
+    await fs.readdirSync(resolve(process.cwd(), 'public/uploads')).forEach((imageName) => {
+        fs.rmSync(resolve(resolve(process.cwd(), 'public/uploads', imageName)));
+    });
+    const imageNames = await fs.readdirSync(resolve(process.cwd(), 'public/images'));
+
+    return Promise.all(imageNames.map(async (imageName) => {
+        const filePath = resolve(process.cwd(), 'public/images/', imageName);
+        const stats = fs.statSync(filePath);
+        const type = `image/${imageName.split('.').pop().toLowerCase()}`;
+        const [image] = await strapi.plugins.upload.services.upload.upload({
+            data: {},
+            files: {
+                path: filePath,
+                name: imageName,
+                type,
+                size: stats.size,
+            },
+        });
+        return image;
+    }));
 }
 
 async function generateHero(images: Image[]) {
@@ -82,6 +110,7 @@ async function generateCategories() {
 }
 
 async function generateProducts(images: Image[], categories: { id: number; }[], countries: { id: number; }[]) {
+    await strapi.db.query('api::product.product').deleteMany({});
     const prevProducts = await strapi.db.query('api::product.product').findMany({});
     if (prevProducts.length > 0) return prevProducts;
 
@@ -99,7 +128,7 @@ async function generateProducts(images: Image[], categories: { id: number; }[], 
             publishedAt: date,
             category: sample(categories).id,
             country: sample(countries).id,
-            images: sampleSize(images, 3),
+            images: shuffle(sampleSize(images.filter((img) => img.name.startsWith('placeholder')), 3)),
         },
     })));
 }

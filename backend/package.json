@@ -7,8 +7,8 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "run-s build:**",
-    "build:strapi": "strapi build",
     "build:cs": "config-sync i -y",
+    "build:strapi": "strapi build",
     "cs": "config-sync",
     "strapi": "strapi"
   },
