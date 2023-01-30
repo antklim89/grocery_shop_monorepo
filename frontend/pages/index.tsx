@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 
@@ -42,32 +41,27 @@ const HomePage: NextPage<Props> = ({ newProducts, discountProducts, hero, featur
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    try {
-        const [
-            { products: newProducts },
-            { products: discountProducts },
-            hero,
-            features,
-        ] = await Promise.all([
-            getProductsPreviews({
-                'pagination[page]': 0,
-                'pagination[pageSize]': 6,
-                'sort': 'createdAt',
-            }),
-            getProductsPreviews({
-                'pagination[page]': 0,
-                'pagination[pageSize]': 6,
-                'sort': 'discount:desc',
-            }),
-            getHero(),
-            getFeatures(),
-        ]);
+    const [
+        { products: newProducts },
+        { products: discountProducts },
+        hero,
+        features,
+    ] = await Promise.all([
+        getProductsPreviews({
+            'pagination[page]': 0,
+            'pagination[pageSize]': 6,
+            'sort': 'createdAt',
+        }),
+        getProductsPreviews({
+            'pagination[page]': 0,
+            'pagination[pageSize]': 6,
+            'sort': 'discount:desc',
+        }),
+        getHero(),
+        getFeatures(),
+    ]);
 
-        return { props: { newProducts, discountProducts, hero, features } };
-    } catch (error) {
-        if (error instanceof AxiosError) console.error(error.response?.data);
-        return { notFound: true };
-    }
+    return { props: { newProducts, discountProducts, hero, features } };
 
 };
 
