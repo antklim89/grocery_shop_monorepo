@@ -31,6 +31,8 @@ const Pagination = ({ pagination: { page = 1, pageCount } }: PaginationProps) =>
         replace(pageToGo);
     };
 
+    if (pageCount <= 1) return null;
+
     return (
         <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-center my-3">
