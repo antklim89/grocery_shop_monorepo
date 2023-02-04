@@ -4,7 +4,7 @@ import { api } from '~/utils';
 
 
 export type HeroResponse = components['schemas']['HeroResponse']
-export type HeroQuery = paths['/hero']['get']['parameters']['query']
+export type HeroQuery = NonNullable<paths['/hero']['get']['parameters']>['query']
 
 
 export async function getHero() {

@@ -3,7 +3,7 @@ import { paths, components } from '~/swagger';
 import { api } from '~/utils';
 
 
-export type FeatureQuery = paths['/features']['get']['parameters']['query']
+export type FeatureQuery = NonNullable<paths['/features']['get']['parameters']>['query']
 export type FeatureResponse = components['schemas']['FeatureListResponse']
 
 
