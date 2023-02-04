@@ -13,10 +13,7 @@ if (typeof window !== 'undefined') {
         (response) => {
             const token = getCookie(AUTH_TOKEN_NAME);
             if (token) {
-                response.headers = {
-                    ...response.headers || {},
-                    Authorization: `Bearer ${getCookie(AUTH_TOKEN_NAME)}`,
-                };
+                response.headers.Authorization = `Bearer ${getCookie(AUTH_TOKEN_NAME)}`;
             }
             return response;
         },
