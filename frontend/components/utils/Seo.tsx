@@ -12,7 +12,7 @@ export interface Props {
 
 const Seo: FC<Props> = ({
     description,
-    keywords = [],
+    keywords,
     title,
 }) => {
 
@@ -24,7 +24,7 @@ const Seo: FC<Props> = ({
             <title>{defaultTitle}</title>
             <link href="/favicon.ico" rel="icon" />
             <meta content={metaDescription} name="description" />
-            <meta content={['grocery', 'shop', ...keywords].join(', ')} name="keywords" />
+            <meta content={['grocery', 'shop', ...(keywords || [])].join(', ')} name="keywords" />
             <meta content={metaDescription} name="description" />
             <meta content={title} property="og:title" />
             <meta content={metaDescription} property="og:description" />
