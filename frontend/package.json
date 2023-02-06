@@ -25,7 +25,8 @@
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.5",
     "sass": "^1.58.0",
-    "zod": "^3.20.2"
+    "zod": "^3.20.2",
+    "zustand": "^4.3.2"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.6",
