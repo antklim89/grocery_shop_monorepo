@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 
 
-const Ssr = ({ children }: {children: ReactNode}) => {
+const NoSsr = ({ children }: {children: ReactNode}) => {
     const [inited, setInited] = useState(false);
 
     useEffect(() => {
@@ -12,4 +12,4 @@ const Ssr = ({ children }: {children: ReactNode}) => {
     return null;
 };
 
-export default Ssr;
+export default NoSsr;
