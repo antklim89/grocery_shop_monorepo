@@ -4,8 +4,8 @@ import { IUser } from '~/types';
 import { api } from '~/utils';
 
 
-export type ChangePasswordResponse = paths['/users/{id}']['put']['responses']['200']['content']['application/json'];
-export type ChangePasswordBody = {
+export type UpdateUserResponse = paths['/users/{id}']['put']['responses']['200']['content']['application/json'];
+export type UpdateUserBody = {
     name?: string
     surname?: string
     address?: string
@@ -13,8 +13,8 @@ export type ChangePasswordBody = {
 }
 
 
-export async function updateUser(id:number, body: ChangePasswordBody): Promise<IUser> {
-    const { data } = await api.put<ChangePasswordResponse>(`/users/${id}`, body);
+export async function updateUser(id:number, body: UpdateUserBody): Promise<IUser> {
+    const { data } = await api.put<UpdateUserResponse>(`/users/${id}`, body);
 
     const user = await userSchema.parseAsync(data);
     return user;

@@ -6,3 +6,5 @@ export * from './getMe';
 export * from './getHero';
 export * from './getAbout';
 export * from './getProduct';
+export * from './logout';
+export * from './updateUser';
