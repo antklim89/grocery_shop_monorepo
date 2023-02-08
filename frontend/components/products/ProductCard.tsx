@@ -2,13 +2,12 @@ import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { FC } from 'react';
 
-
 import CatalogItem from './CatalogItem';
 
-import { useCart } from '~/components/cart/CartProvider';
 import Price from '~/components/utils/Price';
 import StrapiImage from '~/components/utils/StrapiImage';
 import { CATEGORY_QUERY_NAME, COUNTRY_QUERY_NAME } from '~/constants';
+import { useCartStore } from '~/store';
 import { IProductPreview } from '~/types';
 
 
@@ -17,13 +16,15 @@ const ProductCard: FC<IProductPreview> = (product) => {
         name, price, country, id, category, unit, discount, images,
     } = product;
 
-    const cart = useCart();
+    const cartItems = useCartStore((state) => state.cartItems);
+    const getCurrentCart = useCartStore((state) => state.getCurrentCart);
+    const toggleCart = useCartStore((state) => state.toggleCart);
 
-    const isPoroductInCart = cart.isProductInCart(id);
+    const isPoroductInCart = Boolean(cartItems[id]);
 
     const handleToggleCart = (): void => {
-        const cartToToggle = cart.getCurrentCart(product);
-        cart.toggleCart(cartToToggle);
+        const cartToToggle = getCurrentCart(product);
+        if (cartToToggle) toggleCart(cartToToggle);
     };
 
     return (
@@ -69,7 +70,6 @@ const ProductCard: FC<IProductPreview> = (product) => {
                     </Link>
                     <button
                         className="btn btn-primary my-2"
-                        disabled={cart.loading}
                         type="submit"
                         onClick={handleToggleCart}
                     >

@@ -1,10 +1,9 @@
-import { observer, Observer } from 'mobx-react-lite';
-import { FC, FormEvent, useMemo } from 'react';
+import { FC, FormEvent, useReducer } from 'react';
 
-import { useCart } from '~/components/cart/CartProvider';
-import Loading from '~/components/utils/Loading';
+import NoSsr from '~/components/utils/NoSsr';
 import Price from '~/components/utils/Price';
-import { IProduct } from '~/types';
+import { useCartStore } from '~/store';
+import { ICart, IProduct } from '~/types';
 
 
 const ProductOrder: FC<IProduct> = (product) => {
@@ -12,26 +11,23 @@ const ProductOrder: FC<IProduct> = (product) => {
         id, name, country, category, discount, price, unit,
     } = product;
 
-    const cart = useCart();
+    const getCurrentCart = useCartStore((state) => state.getCurrentCart);
+    const toggleCart = useCartStore((state) => state.toggleCart);
+    const cartItems = useCartStore((state) => state.cartItems);
+    const updateCartItem = useCartStore((state) => state.updateCartItem);
 
-    const cartItem = useMemo(
-        () => cart.getCurrentCart(product),
-        [id],
+
+    const [cartItem, setCartItem] = useReducer(
+        (oldState: ICart, newState: Partial<Pick<ICart, 'qty'>>) => {
+            updateCartItem(id, newState);
+            return { ...oldState, ...newState };
+        },
+        getCurrentCart(product),
     );
-
-    if (!cart.isInited) {
-        return (
-            <div className="border h-100 shadow p-2 d-flex flex-column">
-                <h1 className="text-center py-2 text-dark border-bottom">{name}</h1>
-                <Loading loading />
-            </div>
-        );
-    }
-
 
     const handleOrder = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        cart.toggleCart(cartItem);
+        toggleCart(cartItem);
     };
 
     return (
@@ -39,30 +35,20 @@ const ProductOrder: FC<IProduct> = (product) => {
             <h1 className="text-center py-2 text-dark border-bottom">{name}</h1>
 
             <div className="fs-5 py-2 border-bottom">
-                {discount > 0
-                    ? (
-                        <p>
-                            Discount: {discount}%
-                        </p>
-                    )
-                    : null}
+                {discount > 0 && <p>Discount: {discount}%</p>}
                 <p>
                     Price: <br />
                     <Price price={price} />
                 </p>
-                <Observer>
-                    {() => (
-                        <p>
-                            Total price for{' '}{cartItem.qty}{' '}{unit}:
-                            <br />
-                            <big>
-                                <b>
-                                    <Price price={price} qty={cartItem.qty} />
-                                </b>
-                            </big>
-                        </p>
-                    )}
-                </Observer>
+                <p>
+                    <NoSsr>
+                        Total price for{' '}{cartItem.qty}{' '}{unit}:
+                        <br />
+                        <span className="big bold">
+                            <Price price={price} qty={cartItem.qty} />
+                        </span>
+                    </NoSsr>
+                </p>
             </div>
 
             <div className="py-2  border-bottom">
@@ -74,36 +60,36 @@ const ProductOrder: FC<IProduct> = (product) => {
                 className="d-flex flex-column justify-content-end flex-column flex-grow-1"
                 onSubmit={handleOrder}
             >
-                <label className="form-label my-2" htmlFor="qte">
-                    Quantity: ({unit})
-                    <input
-                        className="form-control"
-                        id="qte"
-                        type="number"
-                        value={cartItem.qty}
-                        onChange={(e) => cartItem.changeQty(e.target.value)}
-                    />
-                </label>
-                {cart.isProductInCart(cartItem.product.id)
-                    ? (
+                <NoSsr>
+                    <label className="form-label my-2" htmlFor="qte">
+                        Quantity: ({unit})
                         <input
-                            className="btn btn-primary my-2"
-                            disabled={cart.loading}
-                            type="submit"
-                            value="Remove from Cart"
+                            className="form-control"
+                            id="qte"
+                            type="number"
+                            value={cartItem.qty}
+                            onChange={(e) => setCartItem({ qty: Number(e.target.value) })}
                         />
-                    )
-                    : (
-                        <input
-                            className="btn btn-primary my-2"
-                            disabled={cart.loading}
-                            type="submit"
-                            value="Place to Cart"
-                        />
-                    )}
+                    </label>
+                    {cartItems[id]
+                        ? (
+                            <input
+                                className="btn btn-primary my-2"
+                                type="submit"
+                                value="Remove from Cart"
+                            />
+                        )
+                        : (
+                            <input
+                                className="btn btn-primary my-2"
+                                type="submit"
+                                value="Place to Cart"
+                            />
+                        )}
+                </NoSsr>
             </form>
         </div>
     );
 };
 
-export default observer(ProductOrder);
+export default ProductOrder;

@@ -1,36 +1,28 @@
-import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 
 import Price from '../utils/Price';
 
 import CartListItem from './CartListItem';
 
-import { useCart } from '~/components/cart/CartProvider';
-import Loading from '~/components/utils/Loading';
 import ProtectedComponent from '~/components/utils/ProtectedComponent';
+import { useCartStore } from '~/store';
 
 
 const CartList = (): JSX.Element => {
-    const cart = useCart();
+    const cartItems = useCartStore((state) => Object.values(state.cartItems));
 
-    if (!cart.isInited) {
-        return (
-            <div className="d-flex justify-content-center py-5"><Loading loading /></div>
-        );
-    }
-
-    if (!cart.cartItems || cart.cartItems.length === 0) {
+    if (cartItems.length === 0) {
         return (
             <p className="h1 text-center text-uppercase">Cart is Empty</p>
         );
     }
 
-    const totalPrice = cart.cartItems.reduce((acc, i) => acc + (i.product.price * i.qty), 0);
+    const totalPrice = cartItems.reduce((acc, i) => acc + (i.product.price * i.qty), 0);
 
     return (
         <div className="container">
             <div className="list-group mt-5">
-                {cart.cartItems.map((cartItem) => (
+                {cartItems.map((cartItem) => (
                     <CartListItem cartItem={cartItem} key={cartItem.product.id} />
                 ))}
             </div>
@@ -56,4 +48,4 @@ const CartList = (): JSX.Element => {
     );
 };
 
-export default observer(CartList);
+export default CartList;
