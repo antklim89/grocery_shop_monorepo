@@ -5,7 +5,6 @@ import LogoutButton from '~/components/auth/LogoutButton';
 import Loading from '~/components/utils/Loading';
 import NoSsr from '~/components/utils/NoSsr';
 import ProtectedComponent from '~/components/utils/ProtectedComponent';
-import { useAuthStore } from '~/store';
 import { cls } from '~/utils';
 
 
@@ -15,7 +14,6 @@ interface HeaderLinksProps {
 
 const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
     const { route } = useRouter();
-    const username = useAuthStore((state) => state.user?.username);
 
     return (
         <ul className={cls('navbar-nav justify-content-end flex-grow-1 pe-3', className)}>
@@ -60,7 +58,7 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                 <li className="nav-item me-1">
                     <NoSsr>
                         <Link className="nav-link btn btn-link" href="/profile">
-                            {username}
+                            Profile
                         </Link>
                     </NoSsr>
                 </li>
