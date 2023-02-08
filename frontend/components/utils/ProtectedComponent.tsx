@@ -2,8 +2,8 @@ import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import { FC, ReactElement, ReactNode, useEffect, useState } from 'react';
 
-import { useAuth } from '~/components/auth/AuthProvider';
 import NotFoundPage from '~/pages/404';
+import { useAuthStore } from '~/store';
 
 
 interface Props {
@@ -23,17 +23,16 @@ const ProtectedComponent: FC<Props> = ({
     fallback,
     authNeeded = true,
 }) => {
-    const auth = useAuth();
+    const isAuth = useAuthStore((state) => Boolean(state.user));
     const router = useRouter();
 
     const [isMounted, setIsMounted] = useState(false);
 
     const needProtect = authNeeded
-        ? !auth.isAuth
-        : auth.isAuth;
+        ? !isAuth
+        : isAuth;
 
     useEffect(() => {
-        if (!auth.isUserFetched) return;
         setIsMounted(true);
 
         if (needProtect && redirect === 'back') {
@@ -43,7 +42,7 @@ const ProtectedComponent: FC<Props> = ({
         if (needProtect && redirect) {
             router.replace(redirect);
         }
-    }, [auth.isUserFetched, auth.isAuth]);
+    }, [isAuth]);
 
 
     if (!isMounted) return fallback || null;

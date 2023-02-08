@@ -1,11 +1,11 @@
-import { Observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { useAuth } from '~/components/auth/AuthProvider';
 import LogoutButton from '~/components/auth/LogoutButton';
 import Loading from '~/components/utils/Loading';
+import NoSsr from '~/components/utils/NoSsr';
 import ProtectedComponent from '~/components/utils/ProtectedComponent';
+import { useAuthStore } from '~/store';
 import { cls } from '~/utils';
 
 
@@ -15,7 +15,7 @@ interface HeaderLinksProps {
 
 const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
     const { route } = useRouter();
-    const auth = useAuth();
+    const username = useAuthStore((state) => state.user?.username);
 
     return (
         <ul className={cls('navbar-nav justify-content-end flex-grow-1 pe-3', className)}>
@@ -58,13 +58,11 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                 )}
             >
                 <li className="nav-item me-1">
-                    <Observer>
-                        {() => (
-                            <Link className="nav-link btn btn-link" href="/profile">
-                                {auth.user?.username || ''}
-                            </Link>
-                        )}
-                    </Observer>
+                    <NoSsr>
+                        <Link className="nav-link btn btn-link" href="/profile">
+                            {username}
+                        </Link>
+                    </NoSsr>
                 </li>
                 <li className="nav-item me-5">
                     <LogoutButton

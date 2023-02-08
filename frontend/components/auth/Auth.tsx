@@ -2,33 +2,37 @@ import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { FC, FormEvent, useEffect, useState } from 'react';
 
-import { useAuth } from '~/components/auth/AuthProvider';
 import Loading from '~/components/utils/Loading';
+import { useAuthStore } from '~/store';
 
 
 const Auth: FC<{isSignup?: boolean}> = ({ isSignup }) => {
+    const [error, setError] = useState<string | null>(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirm, setConfirm] = useState('');
 
-    const auth = useAuth();
+    const signup = useAuthStore((state) => state.signup);
+    const login = useAuthStore((state) => state.login);
+    const loading = useAuthStore((state) => state.loading);
+
 
     const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
             if (isSignup) {
-                await auth.signup({ email, username: email, password });
+                await signup({ email, username: email, password });
             } else {
-                await auth.login({ identifier: email, password });
+                await login({ identifier: email, password });
             }
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            if (err instanceof Error) setError(err.message);
         }
     };
 
     useEffect(() => {
-        auth.setError('');
+        setError(null);
     }, [isSignup, email, password, confirm]);
 
 
@@ -37,11 +41,11 @@ const Auth: FC<{isSignup?: boolean}> = ({ isSignup }) => {
             <h1 className="text-center text-primary">{isSignup ? 'Sign Up' : 'Log In'}
             </h1>
             <form className="p-5 border" onSubmit={handleLogin}>
-                {auth.error
+                {error
                     ? (
                         <div className="alert alert-danger" role="alert">
                             <i className="bi bi-exclamation-triangle px-2" />
-                            {auth.error}
+                            {error}
                         </div>
                     )
                     : null}
@@ -100,9 +104,9 @@ const Auth: FC<{isSignup?: boolean}> = ({ isSignup }) => {
                             )}
                     </p>
                 </div>
-                <button className="btn btn-primary" disabled={auth.loading} type="submit">
+                <button className="btn btn-primary" disabled={loading} type="submit">
                     {isSignup ? 'Sign up' : 'Log In'}
-                    <Loading loading={auth.loading} size="sm" />
+                    <Loading loading={loading} size="sm" />
                 </button>
             </form>
         </div>

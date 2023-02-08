@@ -1,15 +1,15 @@
 import { HTMLAttributes } from 'react';
 
-import { useAuth } from '~/components/auth/AuthProvider';
+import { useAuthStore } from '~/store';
 import { useBootstrap } from '~/utils';
 
 
 const LogoutButton = (props: HTMLAttributes<HTMLButtonElement>): JSX.Element => {
-    const auth = useAuth();
     const [modal, ref] = useBootstrap('Modal');
+    const logout = useAuthStore((state) => state.logout);
 
     const handleLogout = () => {
-        auth.logout();
+        logout();
         modal?.hide();
     };
 

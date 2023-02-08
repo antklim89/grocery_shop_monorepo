@@ -1,17 +1,16 @@
 import { Observer } from 'mobx-react-lite';
 import { FC, memo } from 'react';
 
-
-import { useAuth } from './AuthProvider';
 import ChangePassword from './ChangePassword';
 import UserInformationForm from './UserInformationForm';
 
+import { useAuthStore } from '~/store';
 import { useBootstrap } from '~/utils';
 
 
 const Profile: FC = () => {
     useBootstrap('Tab');
-    const { user } = useAuth();
+    const user = useAuthStore((state) => state.user);
 
     if (!user) return null;
     return (
@@ -62,7 +61,7 @@ const Profile: FC = () => {
                         id="user-info"
                         role="tabpanel"
                     >
-                        <UserInformationForm />
+                        <UserInformationForm {...user} />
                     </div>
                     <div
                         aria-labelledby="change-profile-tab"

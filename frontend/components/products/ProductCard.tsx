@@ -2,6 +2,8 @@ import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { FC } from 'react';
 
+import NoSsr from '../utils/NoSsr';
+
 import CatalogItem from './CatalogItem';
 
 import Price from '~/components/utils/Price';
@@ -51,7 +53,9 @@ const ProductCard: FC<IProductPreview> = (product) => {
                         width={400}
                     />
                     <div className="position-absolute end-0 top-10 m-1 text-white">
-                        {isPoroductInCart ? <i className="bi bi-cart-check d-inline-block p-1 m-1 w-100 text-center rounded bg-primary" /> : null}
+                        <NoSsr>
+                            {isPoroductInCart ? <i className="bi bi-cart-check d-inline-block p-1 m-1 w-100 text-center rounded bg-primary" /> : null}
+                        </NoSsr>
                         <br />
                         {discount > 0 && <span className="d-inline-block p-1 m-1 w-100 text-center rounded bg-primary">{discount}%</span>}
                     </div>
@@ -73,7 +77,9 @@ const ProductCard: FC<IProductPreview> = (product) => {
                         type="submit"
                         onClick={handleToggleCart}
                     >
-                        {isPoroductInCart ? 'Remove from Cart' : 'Place to Cart'}
+                        <NoSsr>
+                            {isPoroductInCart ? 'Remove from Cart' : 'Place to Cart'}
+                        </NoSsr>
                     </button>
                 </div>
             </article>

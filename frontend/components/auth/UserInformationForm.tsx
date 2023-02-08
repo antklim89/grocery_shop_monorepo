@@ -1,22 +1,16 @@
 import { observer } from 'mobx-react-lite';
 import { FC, FormEvent, useState } from 'react';
 
-import { useAuth } from './AuthProvider';
-
 import Alert from '~/components/utils/Alert';
 import Loading from '~/components/utils/Loading';
-import { updateUser } from '~/requests/updateUser';
+import { useAuthStore } from '~/store';
+import { IUser } from '~/types';
 
 
-const UserInformationForm: FC = () => {
-    const user = useAuth().getUser();
-
+const UserInformationForm: FC<IUser> = (user) => {
     const [loading, setLoading] = useState(false);
 
-    const [name, setName] = useState(user.name || '');
-    const [surname, setSurname] = useState(user.surname || '');
-    const [address, setAddress] = useState(user.address || '');
-    const [phone, setPhone] = useState(user.phone || '');
+    const updateUser = useAuthStore((state) => state.updateUser);
 
     const [errorMessage, setErrorMessage] = useState<string|null>(null);
     const [resultMessage, setResultMessage] = useState<string|null>(null);
@@ -28,7 +22,13 @@ const UserInformationForm: FC = () => {
         setResultMessage(null);
         try {
             setLoading(true);
-            await updateUser(user.id, { name, surname, address, phone });
+            const formData = new FormData(e.currentTarget);
+            const name = formData.get('name') as string;
+            const surname = formData.get('surname') as string;
+            const address = formData.get('address') as string;
+            const phone = formData.get('phone') as string;
+
+            await updateUser({ name, surname, address, phone });
             setResultMessage('Profile has been successfully updated');
         } catch (err) {
             if (err instanceof Error) setErrorMessage(err.message);
@@ -48,12 +48,12 @@ const UserInformationForm: FC = () => {
                     <input
                         autoComplete="given-name"
                         className="form-control"
+                        defaultValue={user.name || ''}
                         id="name"
                         maxLength={200}
+                        name="name"
                         pattern="^[a-zA-Z-']*$"
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
                     />
                     <span className="invalid-feedback">Name is invalid</span>
                 </label>
@@ -65,12 +65,12 @@ const UserInformationForm: FC = () => {
                     <input
                         autoComplete="family-name"
                         className="form-control"
+                        defaultValue={user.surname || ''}
                         id="surname"
                         maxLength={200}
+                        name="surname"
                         pattern="^[a-zA-Z-']*$"
                         type="text"
-                        value={surname}
-                        onChange={(e) => setSurname(e.target.value)}
                     />
                     <span className="invalid-feedback">Surname password is invalid</span>
                 </label>
@@ -82,12 +82,12 @@ const UserInformationForm: FC = () => {
                     <input
                         autoComplete="tel"
                         className="form-control"
+                        defaultValue={user.phone || ''}
                         id="phone"
                         maxLength={200}
+                        name="phone"
                         pattern="^[\d-]*$"
                         type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
                     />
                     <span className="invalid-feedback">Phone is invalid</span>
                 </label>
@@ -99,11 +99,11 @@ const UserInformationForm: FC = () => {
                     <input
                         autoComplete="address-line1"
                         className="form-control"
+                        defaultValue={user.address || ''}
                         id="address"
                         maxLength={2000}
+                        name="address"
                         type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
                     />
                     <span className="invalid-feedback">Address is invalid</span>
                 </label>
