@@ -1,5 +1,3 @@
-import { observer } from 'mobx-react-lite';
-
 import Profile from '~/components/auth/Profile';
 import NoSsr from '~/components/utils/NoSsr';
 import ProtectedComponent from '~/components/utils/ProtectedComponent';
@@ -21,4 +19,4 @@ const ProfilePage = (): JSX.Element => {
 };
 
 
-export default observer(ProfilePage);
+export default ProfilePage;

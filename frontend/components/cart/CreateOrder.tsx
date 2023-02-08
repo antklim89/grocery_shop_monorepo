@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 
 
@@ -113,4 +112,4 @@ const CreateOrderModal = (): JSX.Element => {
     );
 };
 
-export default observer(CreateOrderModal);
+export default CreateOrderModal;

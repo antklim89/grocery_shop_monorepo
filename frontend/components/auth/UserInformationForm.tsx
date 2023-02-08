@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import { FC, FormEvent, useState } from 'react';
 
 import Alert from '~/components/utils/Alert';
@@ -116,4 +115,4 @@ const UserInformationForm: FC<IUser> = (user) => {
     );
 };
 
-export default observer(UserInformationForm);
+export default UserInformationForm;

@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -87,5 +86,5 @@ const ProductCard: FC<IProductPreview> = (product) => {
     );
 };
 
-export default observer(ProductCard);
+export default ProductCard;
 

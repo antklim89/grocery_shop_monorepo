@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { FC, FormEvent, useEffect, useState } from 'react';
 
@@ -113,4 +112,4 @@ const Auth: FC<{isSignup?: boolean}> = ({ isSignup }) => {
     );
 };
 
-export default observer(Auth);
+export default Auth;

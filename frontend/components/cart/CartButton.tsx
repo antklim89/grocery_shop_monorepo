@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { ButtonHTMLAttributes } from 'react';
 
@@ -28,4 +27,4 @@ const CartButton = (props: ButtonHTMLAttributes<HTMLAnchorElement>): JSX.Element
     );
 };
 
-export default observer(CartButton);
+export default CartButton;

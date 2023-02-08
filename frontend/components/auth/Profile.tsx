@@ -1,4 +1,3 @@
-import { Observer } from 'mobx-react-lite';
 import { FC, memo } from 'react';
 
 import ChangePassword from './ChangePassword';
@@ -15,14 +14,9 @@ const Profile: FC = () => {
     if (!user) return null;
     return (
         <div className="container">
-            <Observer>
-                {() => (
-                    <h1 className="text-center mb-4">
-                        {user.username}
-                        &apos; profile
-                    </h1>
-                )}
-            </Observer>
+            <h1 className="text-center mb-4">
+                {user.username} profile
+            </h1>
 
             <div className="row">
                 <nav className="col-12 col-md-4">

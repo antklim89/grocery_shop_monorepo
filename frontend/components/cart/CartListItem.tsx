@@ -1,4 +1,3 @@
-import { Observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import { FC, memo } from 'react';
 
@@ -29,16 +28,12 @@ const CartListItem: FC<{cartItem: ICart}> = ({ cartItem }) => {
             <div className="col-lg-4 col-12 d-flex justify-content-between">
                 <label className="form-label my-2">
                     Quantity: ({unit})
-                    <Observer>
-                        {() => (
-                            <input
-                                className="form-control"
-                                type="number"
-                                value={cartItem.qty}
-                                onChange={(e) => changeQty(id, { qty: Number(e.target.value) })}
-                            />
-                        )}
-                    </Observer>
+                    <input
+                        className="form-control"
+                        type="number"
+                        value={cartItem.qty}
+                        onChange={(e) => changeQty(id, { qty: Number(e.target.value) })}
+                    />
                 </label>
                 <button
                     className="btn btn-outline-danger btn-lg m-2 align-self-center"

@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react-lite';
 import { FC, FormEvent, useState } from 'react';
 
 import Alert from '~/components/utils/Alert';
@@ -107,4 +106,4 @@ const ChangePassword: FC = () => {
     );
 };
 
-export default observer(ChangePassword);
+export default ChangePassword;
