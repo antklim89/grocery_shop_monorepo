@@ -1,18 +1,19 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+
+import { IUser } from '~/types';
 
 
-const CreateOrderModal = (): JSX.Element => {
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [address, setAddress] = useState('');
-    const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
+const CreateOrder = (user: IUser): JSX.Element => {
+    const [{ name, surname, phone, address, email }, setValues] = useReducer(
+        (oldState: IUser, newState: Partial<IUser>) => ({ ...oldState, ...newState }),
+        user,
+    );
 
     return (
         <div className="container">
             <form className="row">
                 <div className="mb-3 col-sm-6 col-12">
-                    <label className="w-100" htmlFor="email">
+                    <label className="w-100">
                         Name:
                         <br />
                         <input
@@ -24,13 +25,13 @@ const CreateOrderModal = (): JSX.Element => {
                             minLength={5}
                             pattern="^[a-zA-Z-']*$"
                             type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            value={name || ''}
+                            onChange={(e) => setValues({ name: e.target.value || '' })}
                         />
                     </label>
                 </div>
                 <div className="mb-3 col-sm-6 col-12">
-                    <label className="w-100" htmlFor="email">
+                    <label className="w-100">
                         Surname:
                         <br />
                         <input
@@ -42,13 +43,13 @@ const CreateOrderModal = (): JSX.Element => {
                             minLength={3}
                             pattern="^[a-zA-Z-']*$"
                             type="text"
-                            value={surname}
-                            onChange={(e) => setSurname(e.target.value)}
+                            value={surname || ''}
+                            onChange={(e) => setValues({ surname: e.target.value || '' })}
                         />
                     </label>
                 </div>
                 <div className="mb-3 col-12">
-                    <label className="w-100" htmlFor="email">
+                    <label className="w-100">
                         E-mail:
                         <br />
                         <input
@@ -59,13 +60,13 @@ const CreateOrderModal = (): JSX.Element => {
                             maxLength={200}
                             minLength={3}
                             type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={email || ''}
+                            onChange={(e) => setValues({ email: e.target.value || '' })}
                         />
                     </label>
                 </div>
                 <div className="mb-3 col-12">
-                    <label className="w-100" htmlFor="email">
+                    <label className="w-100">
                         Address:
                         <br />
                         <input
@@ -76,13 +77,13 @@ const CreateOrderModal = (): JSX.Element => {
                             maxLength={2000}
                             minLength={5}
                             type="text"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
+                            value={address || ''}
+                            onChange={(e) => setValues({ address: e.target.value || '' })}
                         />
                     </label>
                 </div>
                 <div className="mb-3 col-12">
-                    <label className="w-100" htmlFor="email">
+                    <label className="w-100">
                         Phone number:
                         <br />
                         <input
@@ -94,8 +95,8 @@ const CreateOrderModal = (): JSX.Element => {
                             minLength={3}
                             pattern="^[\d-]*$"
                             type="tel"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            value={phone || ''}
+                            onChange={(e) => setValues({ phone: e.target.value || '' })}
                         />
                     </label>
                 </div>
@@ -112,4 +113,4 @@ const CreateOrderModal = (): JSX.Element => {
     );
 };
 
-export default CreateOrderModal;
+export default CreateOrder;
