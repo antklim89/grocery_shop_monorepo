@@ -3,6 +3,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
+import { AUTH_LOCAL_STORAGE_NAME } from '~/constants';
 import {
     LoginBody, SignupBody, getMe, login, signup, logout, UpdateUserBody, updateUser,
 } from '~/requests';
@@ -87,5 +88,5 @@ export const useAuthStore = create(persist(immer<Store>((set, get) => ({
     },
 
 })), {
-    name: 'grocery-shop-auth',
+    name: AUTH_LOCAL_STORAGE_NAME,
 }));

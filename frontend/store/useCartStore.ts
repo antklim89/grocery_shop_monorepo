@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
+import { CART_LOCAL_STORAGE_NAME } from '~/constants';
 import { ICart } from '~/types';
 
 
@@ -42,6 +43,6 @@ export const useCartStore = create(persist(immer<Store>((set, get) => ({
         });
     },
 })), {
-    name: 'grocery-shop-cart',
+    name: CART_LOCAL_STORAGE_NAME,
 }));
 

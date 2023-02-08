@@ -9,7 +9,8 @@ export const DEFAULT_DESCRIPTION = process.env.DEFAULT_DESCRIPTION || 'Lorem ips
 export const DEFAULT_TITLE = process.env.DEFAULT_TITLE || 'Grocery Shop';
 export const CREATOR = process.env.CREATOR || 'Me';
 
-export const CART_LOCAL_STORAGE_NAME = process.env.CART_LOCAL_STORAGE_NAME || 'grocery_shop_cart';
+export const CART_LOCAL_STORAGE_NAME = process.env.NEXT_PUBLIC_CART_LOCAL_STORAGE_NAME || 'grocery-shop-cart';
+export const AUTH_LOCAL_STORAGE_NAME = process.env.NEXT_PUBLIC_CART_LOCAL_STORAGE_NAME || 'grocery-shop-auth';
 export const AUTH_TOKEN_NAME = process.env.AUTH_TOKEN_NAME || 'token';
 export const PRODUCTS_LIMIT = Number(process.env.PRODUCTS_LIMIT) || 6;
 
