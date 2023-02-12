@@ -1,5 +1,7 @@
 import { FC, lazy, Suspense } from 'react';
 
+import { cls } from '~/utils';
+
 
 const ReactMarkdown = lazy(() => import('react-markdown'));
 
@@ -12,7 +14,7 @@ const LazyReactMarkdown: FC<LazyReactMarkdownProps> = ({ children, className }) 
     return (
         <Suspense
             fallback={(
-                <div className="spinner-border" role="status">
+                <div className={cls(className, 'spinner-border')} role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div>
             )}
