@@ -9,7 +9,7 @@ export type SignupBody = paths['/auth/local/register']['post']['requestBody']['c
 
 
 export async function signup(body: SignupBody) {
-    const { data } = await api.post<SignupResponse>('/auth/local/register', body);
+    const data = await api.post('auth/local/register', { json: body }).json<SignupResponse>();
 
     const authData = await authSchema.parseAsync(data);
     setCookie(AUTH_TOKEN_NAME, authData.jwt);

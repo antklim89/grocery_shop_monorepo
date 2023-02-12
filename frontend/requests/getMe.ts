@@ -10,9 +10,7 @@ export async function getMe(token?: string) {
     const headers: Record<string, string> = {};
     if (token) headers.Authorization = `Bearer ${token}`;
 
-    const { data } = await api.get<MeResponse>('/users/me', {
-        headers,
-    });
+    const data = await api.get('users/me', { headers }).json<MeResponse>();
 
     const user = await userSchema.parseAsync(data);
 

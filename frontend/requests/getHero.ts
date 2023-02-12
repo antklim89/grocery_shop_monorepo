@@ -11,7 +11,7 @@ export async function getHero() {
     const query: HeroQuery = {
         populate: 'image',
     };
-    const { data } = await api.get<HeroResponse>('/hero', { params: query });
+    const data = await api.get('hero', { searchParams: query }).json<HeroResponse>();
 
     const hero = await heroSchema.parseAsync(data.data?.attributes);
 

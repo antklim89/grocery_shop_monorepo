@@ -7,7 +7,7 @@ export type AboutResponse = components['schemas']['AboutResponse']
 
 
 export async function getAbout() {
-    const { data } = await api.get<AboutResponse>('/about', { params: { populate: 'image' } });
+    const data = await api.get('about', { searchParams: { populate: 'image' } }).json<AboutResponse>();
 
     const about = await aboutSchema.parseAsync(data.data?.attributes);
 

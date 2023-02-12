@@ -8,7 +8,7 @@ export type ChangePasswordBody = paths['/auth/change-password']['post']['request
 
 
 export async function changePassword(body: ChangePasswordBody): Promise<void> {
-    const { data } = await api.post<ChangePasswordResponse>('/auth/change-password', body);
+    const data = await api.post('auth/change-password', { json: body }).json<ChangePasswordResponse>();
 
     if (data.jwt) setCookie(AUTH_TOKEN_NAME, data.jwt);
 }

@@ -11,7 +11,7 @@ export async function getFeatures() {
     const query: FeatureQuery = {
         populate: 'image',
     };
-    const { data } = await api.get<FeatureResponse>('/features', { params: query });
+    const data = await api.get('features', { searchParams: query }).json<FeatureResponse>();
 
     const feature = await featuresSchema.parseAsync(data);
 

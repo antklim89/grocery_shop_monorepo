@@ -10,11 +10,11 @@ type ProductResponse = components['schemas']['ProductResponse'];
 
 export async function getProduct(id: number) {
     try {
-        const { data } = await api.get<ProductResponse>(`/products/${id}`, {
-            params: {
-                'populate': 'images, country, category',
+        const data = await api.get(`products/${id}`, {
+            searchParams: {
+                populate: 'images, country, category',
             },
-        });
+        }).json<ProductResponse>();
 
         const product = await productSchema.parseAsync(data);
 

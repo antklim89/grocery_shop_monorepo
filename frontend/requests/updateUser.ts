@@ -14,7 +14,7 @@ export type UpdateUserBody = {
 
 
 export async function updateUser(id:number, body: UpdateUserBody): Promise<IUser> {
-    const { data } = await api.put<UpdateUserResponse>(`/users/${id}`, body);
+    const data = await api.put(`users/${id}`, { json: body }).json<UpdateUserResponse>();
 
     const user = await userSchema.parseAsync(data);
     return user;

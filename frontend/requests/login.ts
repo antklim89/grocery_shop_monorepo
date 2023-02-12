@@ -9,7 +9,7 @@ export type LoginBody = paths['/auth/local']['post']['requestBody']['content']['
 
 
 export async function login(body: LoginBody) {
-    const { data } = await api.post<LoginResponse>('/auth/local', body);
+    const data = await api.post('auth/local', { json: body }).json<LoginResponse>();
 
     const authData = await authSchema.parseAsync(data);
     setCookie(AUTH_TOKEN_NAME, authData.jwt);

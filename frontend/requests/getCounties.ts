@@ -7,7 +7,7 @@ export type CountryResponse = components['schemas']['CountryListResponse']
 
 
 export async function getCounties() {
-    const { data } = await api.get<CountryResponse>('/countries');
+    const data = await api.get('countries').json<CountryResponse>();
 
     const country = await countriesSchema.parseAsync(data);
 
