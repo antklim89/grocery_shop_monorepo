@@ -10,8 +10,8 @@ module.exports = {
         /**
         * NextJS
         */
-        // 'next',
-        // 'next/core-web-vitals',
+        'next',
+        'next/core-web-vitals',
 
         /**
         * React
