@@ -1,13 +1,11 @@
 import LazyReactMarkdown from '~/components/utils/LazyReactMarkdown';
 import StrapiImage from '~/components/utils/StrapiImage';
-import { IFeature } from '~/types';
+import { getFeatures } from '~/requests';
 
 
-interface FeaturesProps {
-    features: IFeature[];
-}
+const Features = async () => {
+    const features = await getFeatures();
 
-const Features = ({ features }: FeaturesProps): JSX.Element => {
     return (
         <section className="mb-5 py-2 bg-dark text-white">
             <div className="container">

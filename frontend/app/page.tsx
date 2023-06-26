@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
+import { Features } from '~/components';
 import Hero from '~/components/layout/Hero';
 import { DEFAULT_DESCRIPTION } from '~/constants';
 
@@ -27,7 +28,7 @@ const HomePage = () => {
                 <h2 className="text-center">New Products</h2>
                 {/* <ProductsList products={newProducts} /> */}
             </div>
-            {/* <Features features={features} /> */}
+            <Features />
             <div className="container mt-4">
                 <h2 className="text-center">Big Discount</h2>
                 {/* <ProductsList products={discountProducts} /> */}
