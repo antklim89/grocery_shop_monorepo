@@ -41,6 +41,7 @@ export const useAuthStore = create(persist(immer<Store>((set, get) => ({
         set((state) => {
             state.user = null;
         });
+        window.location.reload();
     },
 
     async updateUser(body: UpdateUserBody): Promise<void> {
@@ -75,6 +76,7 @@ export const useAuthStore = create(persist(immer<Store>((set, get) => ({
             set((state) => {
                 state.user = user;
             });
+            window.location.reload();
         } catch (error) {
             if (error instanceof ZodError) {
                 throw new Error(error.message);
