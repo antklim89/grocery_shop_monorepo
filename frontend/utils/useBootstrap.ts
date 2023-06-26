@@ -1,3 +1,4 @@
+'use client';
 import type * as bootstrap from 'bootstrap';
 import { useState, useRef, useEffect, RefObject } from 'react';
 

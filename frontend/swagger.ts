@@ -61,7 +61,6 @@ export interface paths {
   "/users-permissions/permissions": {
     /** Get default generated permissions */
     get: {
-      /** Get default generated permissions */
       responses: {
         /** @description Returns the permissions tree */
         200: {
@@ -83,10 +82,9 @@ export interface paths {
   "/users-permissions/roles/{id}": {
     /** Get a role */
     get: {
-      /** Get a role */
       parameters: {
-          /** @description role Id */
         path: {
+          /** @description role Id */
           id: string;
         };
       };
@@ -111,7 +109,6 @@ export interface paths {
   "/users-permissions/roles": {
     /** List roles */
     get: {
-      /** List roles */
       responses: {
         /** @description Returns list of roles */
         200: {
@@ -133,7 +130,6 @@ export interface paths {
     };
     /** Create a role */
     post: {
-      /** Create a role */
       requestBody: components["requestBodies"]["Users-Permissions-RoleRequest"];
       responses: {
         /** @description Returns ok if the role was create */
@@ -157,10 +153,9 @@ export interface paths {
   "/users-permissions/roles/{role}": {
     /** Update a role */
     put: {
-      /** Update a role */
       parameters: {
-          /** @description role Id */
         path: {
+          /** @description role Id */
           role: string;
         };
       };
@@ -185,10 +180,9 @@ export interface paths {
     };
     /** Delete a role */
     delete: {
-      /** Delete a role */
       parameters: {
-          /** @description role Id */
         path: {
+          /** @description role Id */
           role: string;
         };
       };
@@ -214,7 +208,6 @@ export interface paths {
   "/users/count": {
     /** Get user count */
     get: {
-      /** Get user count */
       responses: {
         /** @description Returns a number */
         200: {
@@ -234,7 +227,6 @@ export interface paths {
   "/users": {
     /** Get list of users */
     get: {
-      /** Get list of users */
       responses: {
         /** @description Returns an array of users */
         200: {
@@ -252,7 +244,6 @@ export interface paths {
     };
     /** Create a user */
     post: {
-      /** Create a user */
       requestBody: {
         content: {
           /**
@@ -290,7 +281,6 @@ export interface paths {
   "/users/me": {
     /** Get authenticated user info */
     get: {
-      /** Get authenticated user info */
       responses: {
         /** @description Returns user info */
         200: {
@@ -310,10 +300,9 @@ export interface paths {
   "/users/{id}": {
     /** Get a user */
     get: {
-      /** Get a user */
       parameters: {
-          /** @description user Id */
         path: {
+          /** @description user Id */
           id: string;
         };
       };
@@ -334,10 +323,9 @@ export interface paths {
     };
     /** Update a user */
     put: {
-      /** Update a user */
       parameters: {
-          /** @description user Id */
         path: {
+          /** @description user Id */
           id: string;
         };
       };
@@ -376,10 +364,9 @@ export interface paths {
     };
     /** Delete a user */
     delete: {
-      /** Delete a user */
       parameters: {
-          /** @description user Id */
         path: {
+          /** @description user Id */
           id: string;
         };
       };
@@ -405,10 +392,6 @@ export interface paths {
      * @description Redirects to provider login before being redirect to /auth/{provider}/callback
      */
     get: {
-      /**
-       * Login with a provider 
-       * @description Redirects to provider login before being redirect to /auth/{provider}/callback
-       */
       responses: {
         /** @description Redirect response */
         301: never;
@@ -427,10 +410,6 @@ export interface paths {
      * @description Returns a jwt token and user info
      */
     post: {
-      /**
-       * Local login 
-       * @description Returns a jwt token and user info
-       */
       requestBody: {
         content: {
           /**
@@ -467,10 +446,6 @@ export interface paths {
      * @description Returns a jwt token and user info
      */
     post: {
-      /**
-       * Register a user 
-       * @description Returns a jwt token and user info
-       */
       requestBody: {
         content: {
           /**
@@ -506,10 +481,9 @@ export interface paths {
   "/auth/{provider}/callback": {
     /** Default Callback from provider auth */
     get: {
-      /** Default Callback from provider auth */
       parameters: {
-          /** @description Provider name */
         path: {
+          /** @description Provider name */
           provider: string;
         };
       };
@@ -532,7 +506,6 @@ export interface paths {
   "/auth/forgot-password": {
     /** Send rest password email */
     post: {
-      /** Send rest password email */
       requestBody: {
         content: {
           /**
@@ -567,7 +540,6 @@ export interface paths {
   "/auth/reset-password": {
     /** Rest user password */
     post: {
-      /** Rest user password */
       requestBody: {
         content: {
           /**
@@ -603,7 +575,6 @@ export interface paths {
   "/auth/change-password": {
     /** Update user's own password */
     post: {
-      /** Update user's own password */
       requestBody: {
         content: {
           "application/json": {
@@ -632,10 +603,9 @@ export interface paths {
   "/auth/email-confirmation": {
     /** Confirm user email */
     get: {
-      /** Confirm user email */
-      parameters?: {
-          /** @description confirmation token received by email */
+      parameters: {
         query?: {
+          /** @description confirmation token received by email */
           confirmation?: string;
         };
       };
@@ -654,7 +624,6 @@ export interface paths {
   "/auth/send-email-confirmation": {
     /** Send confirmation email */
     post: {
-      /** Send confirmation email */
       requestBody: {
         content: {
           "application/json": {
@@ -689,7 +658,7 @@ export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
     Error: {
-      data?: Record<string, never> | ([])[];
+      data?: Record<string, never> | [];
       error: {
         status?: number;
         name?: string;
@@ -717,7 +686,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -726,7 +695,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -760,7 +729,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -769,7 +738,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -818,8 +787,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -971,8 +940,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -1059,7 +1028,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -1068,7 +1037,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -1102,7 +1071,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -1111,7 +1080,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -1160,8 +1129,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -1313,8 +1282,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -1412,7 +1381,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -1421,7 +1390,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -1455,7 +1424,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -1464,7 +1433,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -1513,8 +1482,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -1666,8 +1635,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -1754,7 +1723,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -1763,7 +1732,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -1797,7 +1766,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -1806,7 +1775,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -1855,8 +1824,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -2008,8 +1977,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -2153,8 +2122,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -2268,7 +2237,7 @@ export interface components {
                         caption?: string;
                         width?: number;
                         height?: number;
-                        formats?: Record<string, never>;
+                        formats?: unknown;
                         hash?: string;
                         ext?: string;
                         mime?: string;
@@ -2277,7 +2246,7 @@ export interface components {
                         url?: string;
                         previewUrl?: string;
                         provider?: string;
-                        provider_metadata?: Record<string, never>;
+                        provider_metadata?: unknown;
                         related?: {
                           data?: ({
                               id?: string;
@@ -2311,7 +2280,7 @@ export interface components {
                                       caption?: string;
                                       width?: number;
                                       height?: number;
-                                      formats?: Record<string, never>;
+                                      formats?: unknown;
                                       hash?: string;
                                       ext?: string;
                                       mime?: string;
@@ -2320,7 +2289,7 @@ export interface components {
                                       url?: string;
                                       previewUrl?: string;
                                       provider?: string;
-                                      provider_metadata?: Record<string, never>;
+                                      provider_metadata?: unknown;
                                       related?: {
                                         data?: ({
                                             id?: string;
@@ -2369,8 +2338,8 @@ export interface components {
                                                           attributes?: {
                                                             action?: string;
                                                             subject?: string;
-                                                            properties?: Record<string, never>;
-                                                            conditions?: Record<string, never>;
+                                                            properties?: unknown;
+                                                            conditions?: unknown;
                                                             role?: {
                                                               data?: {
                                                                 id?: string;
@@ -2587,8 +2556,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -2702,7 +2671,7 @@ export interface components {
                         caption?: string;
                         width?: number;
                         height?: number;
-                        formats?: Record<string, never>;
+                        formats?: unknown;
                         hash?: string;
                         ext?: string;
                         mime?: string;
@@ -2711,7 +2680,7 @@ export interface components {
                         url?: string;
                         previewUrl?: string;
                         provider?: string;
-                        provider_metadata?: Record<string, never>;
+                        provider_metadata?: unknown;
                         related?: {
                           data?: ({
                               id?: string;
@@ -2745,7 +2714,7 @@ export interface components {
                                       caption?: string;
                                       width?: number;
                                       height?: number;
-                                      formats?: Record<string, never>;
+                                      formats?: unknown;
                                       hash?: string;
                                       ext?: string;
                                       mime?: string;
@@ -2754,7 +2723,7 @@ export interface components {
                                       url?: string;
                                       previewUrl?: string;
                                       provider?: string;
-                                      provider_metadata?: Record<string, never>;
+                                      provider_metadata?: unknown;
                                       related?: {
                                         data?: ({
                                             id?: string;
@@ -2803,8 +2772,8 @@ export interface components {
                                                           attributes?: {
                                                             action?: string;
                                                             subject?: string;
-                                                            properties?: Record<string, never>;
-                                                            conditions?: Record<string, never>;
+                                                            properties?: unknown;
+                                                            conditions?: unknown;
                                                             role?: {
                                                               data?: {
                                                                 id?: string;
@@ -3032,8 +3001,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -3147,7 +3116,7 @@ export interface components {
                         caption?: string;
                         width?: number;
                         height?: number;
-                        formats?: Record<string, never>;
+                        formats?: unknown;
                         hash?: string;
                         ext?: string;
                         mime?: string;
@@ -3156,7 +3125,7 @@ export interface components {
                         url?: string;
                         previewUrl?: string;
                         provider?: string;
-                        provider_metadata?: Record<string, never>;
+                        provider_metadata?: unknown;
                         related?: {
                           data?: ({
                               id?: string;
@@ -3190,7 +3159,7 @@ export interface components {
                                       caption?: string;
                                       width?: number;
                                       height?: number;
-                                      formats?: Record<string, never>;
+                                      formats?: unknown;
                                       hash?: string;
                                       ext?: string;
                                       mime?: string;
@@ -3199,7 +3168,7 @@ export interface components {
                                       url?: string;
                                       previewUrl?: string;
                                       provider?: string;
-                                      provider_metadata?: Record<string, never>;
+                                      provider_metadata?: unknown;
                                       related?: {
                                         data?: ({
                                             id?: string;
@@ -3248,8 +3217,8 @@ export interface components {
                                                           attributes?: {
                                                             action?: string;
                                                             subject?: string;
-                                                            properties?: Record<string, never>;
-                                                            conditions?: Record<string, never>;
+                                                            properties?: unknown;
+                                                            conditions?: unknown;
                                                             role?: {
                                                               data?: {
                                                                 id?: string;
@@ -3466,8 +3435,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -3581,7 +3550,7 @@ export interface components {
                         caption?: string;
                         width?: number;
                         height?: number;
-                        formats?: Record<string, never>;
+                        formats?: unknown;
                         hash?: string;
                         ext?: string;
                         mime?: string;
@@ -3590,7 +3559,7 @@ export interface components {
                         url?: string;
                         previewUrl?: string;
                         provider?: string;
-                        provider_metadata?: Record<string, never>;
+                        provider_metadata?: unknown;
                         related?: {
                           data?: ({
                               id?: string;
@@ -3624,7 +3593,7 @@ export interface components {
                                       caption?: string;
                                       width?: number;
                                       height?: number;
-                                      formats?: Record<string, never>;
+                                      formats?: unknown;
                                       hash?: string;
                                       ext?: string;
                                       mime?: string;
@@ -3633,7 +3602,7 @@ export interface components {
                                       url?: string;
                                       previewUrl?: string;
                                       provider?: string;
-                                      provider_metadata?: Record<string, never>;
+                                      provider_metadata?: unknown;
                                       related?: {
                                         data?: ({
                                             id?: string;
@@ -3682,8 +3651,8 @@ export interface components {
                                                           attributes?: {
                                                             action?: string;
                                                             subject?: string;
-                                                            properties?: Record<string, never>;
-                                                            conditions?: Record<string, never>;
+                                                            properties?: unknown;
+                                                            conditions?: unknown;
                                                             role?: {
                                                               data?: {
                                                                 id?: string;
@@ -3910,8 +3879,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -4025,7 +3994,7 @@ export interface components {
                         caption?: string;
                         width?: number;
                         height?: number;
-                        formats?: Record<string, never>;
+                        formats?: unknown;
                         hash?: string;
                         ext?: string;
                         mime?: string;
@@ -4034,7 +4003,7 @@ export interface components {
                         url?: string;
                         previewUrl?: string;
                         provider?: string;
-                        provider_metadata?: Record<string, never>;
+                        provider_metadata?: unknown;
                         related?: {
                           data?: ({
                               id?: string;
@@ -4068,7 +4037,7 @@ export interface components {
                                       caption?: string;
                                       width?: number;
                                       height?: number;
-                                      formats?: Record<string, never>;
+                                      formats?: unknown;
                                       hash?: string;
                                       ext?: string;
                                       mime?: string;
@@ -4077,7 +4046,7 @@ export interface components {
                                       url?: string;
                                       previewUrl?: string;
                                       provider?: string;
-                                      provider_metadata?: Record<string, never>;
+                                      provider_metadata?: unknown;
                                       related?: {
                                         data?: ({
                                             id?: string;
@@ -4126,8 +4095,8 @@ export interface components {
                                                           attributes?: {
                                                             action?: string;
                                                             subject?: string;
-                                                            properties?: Record<string, never>;
-                                                            conditions?: Record<string, never>;
+                                                            properties?: unknown;
+                                                            conditions?: unknown;
                                                             role?: {
                                                               data?: {
                                                                 id?: string;
@@ -4344,8 +4313,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -4459,7 +4428,7 @@ export interface components {
                         caption?: string;
                         width?: number;
                         height?: number;
-                        formats?: Record<string, never>;
+                        formats?: unknown;
                         hash?: string;
                         ext?: string;
                         mime?: string;
@@ -4468,7 +4437,7 @@ export interface components {
                         url?: string;
                         previewUrl?: string;
                         provider?: string;
-                        provider_metadata?: Record<string, never>;
+                        provider_metadata?: unknown;
                         related?: {
                           data?: ({
                               id?: string;
@@ -4502,7 +4471,7 @@ export interface components {
                                       caption?: string;
                                       width?: number;
                                       height?: number;
-                                      formats?: Record<string, never>;
+                                      formats?: unknown;
                                       hash?: string;
                                       ext?: string;
                                       mime?: string;
@@ -4511,7 +4480,7 @@ export interface components {
                                       url?: string;
                                       previewUrl?: string;
                                       provider?: string;
-                                      provider_metadata?: Record<string, never>;
+                                      provider_metadata?: unknown;
                                       related?: {
                                         data?: ({
                                             id?: string;
@@ -4560,8 +4529,8 @@ export interface components {
                                                           attributes?: {
                                                             action?: string;
                                                             subject?: string;
-                                                            properties?: Record<string, never>;
-                                                            conditions?: Record<string, never>;
+                                                            properties?: unknown;
+                                                            conditions?: unknown;
                                                             role?: {
                                                               data?: {
                                                                 id?: string;
@@ -4789,8 +4758,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -4904,7 +4873,7 @@ export interface components {
                         caption?: string;
                         width?: number;
                         height?: number;
-                        formats?: Record<string, never>;
+                        formats?: unknown;
                         hash?: string;
                         ext?: string;
                         mime?: string;
@@ -4913,7 +4882,7 @@ export interface components {
                         url?: string;
                         previewUrl?: string;
                         provider?: string;
-                        provider_metadata?: Record<string, never>;
+                        provider_metadata?: unknown;
                         related?: {
                           data?: ({
                               id?: string;
@@ -4947,7 +4916,7 @@ export interface components {
                                       caption?: string;
                                       width?: number;
                                       height?: number;
-                                      formats?: Record<string, never>;
+                                      formats?: unknown;
                                       hash?: string;
                                       ext?: string;
                                       mime?: string;
@@ -4956,7 +4925,7 @@ export interface components {
                                       url?: string;
                                       previewUrl?: string;
                                       provider?: string;
-                                      provider_metadata?: Record<string, never>;
+                                      provider_metadata?: unknown;
                                       related?: {
                                         data?: ({
                                             id?: string;
@@ -5005,8 +4974,8 @@ export interface components {
                                                           attributes?: {
                                                             action?: string;
                                                             subject?: string;
-                                                            properties?: Record<string, never>;
-                                                            conditions?: Record<string, never>;
+                                                            properties?: unknown;
+                                                            conditions?: unknown;
                                                             role?: {
                                                               data?: {
                                                                 id?: string;
@@ -5223,8 +5192,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -5338,7 +5307,7 @@ export interface components {
                         caption?: string;
                         width?: number;
                         height?: number;
-                        formats?: Record<string, never>;
+                        formats?: unknown;
                         hash?: string;
                         ext?: string;
                         mime?: string;
@@ -5347,7 +5316,7 @@ export interface components {
                         url?: string;
                         previewUrl?: string;
                         provider?: string;
-                        provider_metadata?: Record<string, never>;
+                        provider_metadata?: unknown;
                         related?: {
                           data?: ({
                               id?: string;
@@ -5381,7 +5350,7 @@ export interface components {
                                       caption?: string;
                                       width?: number;
                                       height?: number;
-                                      formats?: Record<string, never>;
+                                      formats?: unknown;
                                       hash?: string;
                                       ext?: string;
                                       mime?: string;
@@ -5390,7 +5359,7 @@ export interface components {
                                       url?: string;
                                       previewUrl?: string;
                                       provider?: string;
-                                      provider_metadata?: Record<string, never>;
+                                      provider_metadata?: unknown;
                                       related?: {
                                         data?: ({
                                             id?: string;
@@ -5439,8 +5408,8 @@ export interface components {
                                                           attributes?: {
                                                             action?: string;
                                                             subject?: string;
-                                                            properties?: Record<string, never>;
-                                                            conditions?: Record<string, never>;
+                                                            properties?: unknown;
+                                                            conditions?: unknown;
                                                             role?: {
                                                               data?: {
                                                                 id?: string;
@@ -5623,7 +5592,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -5632,7 +5601,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -5666,7 +5635,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -5675,7 +5644,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -5724,8 +5693,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -5877,8 +5846,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -5966,7 +5935,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -5975,7 +5944,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -6009,7 +5978,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -6018,7 +5987,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -6067,8 +6036,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -6220,8 +6189,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -6320,7 +6289,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -6329,7 +6298,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -6363,7 +6332,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -6372,7 +6341,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -6421,8 +6390,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -6574,8 +6543,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -6663,7 +6632,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -6672,7 +6641,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -6706,7 +6675,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -6715,7 +6684,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -6764,8 +6733,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -6917,8 +6886,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -7018,7 +6987,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -7027,7 +6996,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -7061,7 +7030,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -7070,7 +7039,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -7119,8 +7088,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -7272,8 +7241,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -7361,7 +7330,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -7370,7 +7339,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -7404,7 +7373,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -7413,7 +7382,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -7462,8 +7431,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -7615,8 +7584,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -7715,7 +7684,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -7724,7 +7693,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -7758,7 +7727,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -7767,7 +7736,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -7816,8 +7785,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -7969,8 +7938,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -8058,7 +8027,7 @@ export interface components {
               caption?: string;
               width?: number;
               height?: number;
-              formats?: Record<string, never>;
+              formats?: unknown;
               hash?: string;
               ext?: string;
               mime?: string;
@@ -8067,7 +8036,7 @@ export interface components {
               url?: string;
               previewUrl?: string;
               provider?: string;
-              provider_metadata?: Record<string, never>;
+              provider_metadata?: unknown;
               related?: {
                 data?: ({
                     id?: string;
@@ -8101,7 +8070,7 @@ export interface components {
                             caption?: string;
                             width?: number;
                             height?: number;
-                            formats?: Record<string, never>;
+                            formats?: unknown;
                             hash?: string;
                             ext?: string;
                             mime?: string;
@@ -8110,7 +8079,7 @@ export interface components {
                             url?: string;
                             previewUrl?: string;
                             provider?: string;
-                            provider_metadata?: Record<string, never>;
+                            provider_metadata?: unknown;
                             related?: {
                               data?: ({
                                   id?: string;
@@ -8159,8 +8128,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -8312,8 +8281,8 @@ export interface components {
                             attributes?: {
                               action?: string;
                               subject?: string;
-                              properties?: Record<string, never>;
-                              conditions?: Record<string, never>;
+                              properties?: unknown;
+                              conditions?: unknown;
                               role?: {
                                 data?: {
                                   id?: string;
@@ -8483,8 +8452,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -8568,7 +8537,7 @@ export interface components {
                               caption?: string;
                               width?: number;
                               height?: number;
-                              formats?: Record<string, never>;
+                              formats?: unknown;
                               hash?: string;
                               ext?: string;
                               mime?: string;
@@ -8577,7 +8546,7 @@ export interface components {
                               url?: string;
                               previewUrl?: string;
                               provider?: string;
-                              provider_metadata?: Record<string, never>;
+                              provider_metadata?: unknown;
                               related?: {
                                 data?: ({
                                     id?: string;
@@ -8611,7 +8580,7 @@ export interface components {
                                             caption?: string;
                                             width?: number;
                                             height?: number;
-                                            formats?: Record<string, never>;
+                                            formats?: unknown;
                                             hash?: string;
                                             ext?: string;
                                             mime?: string;
@@ -8620,7 +8589,7 @@ export interface components {
                                             url?: string;
                                             previewUrl?: string;
                                             provider?: string;
-                                            provider_metadata?: Record<string, never>;
+                                            provider_metadata?: unknown;
                                             related?: {
                                               data?: ({
                                                   id?: string;
@@ -8669,8 +8638,8 @@ export interface components {
                                                                 attributes?: {
                                                                   action?: string;
                                                                   subject?: string;
-                                                                  properties?: Record<string, never>;
-                                                                  conditions?: Record<string, never>;
+                                                                  properties?: unknown;
+                                                                  conditions?: unknown;
                                                                   role?: {
                                                                     data?: {
                                                                       id?: string;
@@ -8843,7 +8812,7 @@ export interface components {
                 caption?: string;
                 width?: number;
                 height?: number;
-                formats?: Record<string, never>;
+                formats?: unknown;
                 hash?: string;
                 ext?: string;
                 mime?: string;
@@ -8852,7 +8821,7 @@ export interface components {
                 url?: string;
                 previewUrl?: string;
                 provider?: string;
-                provider_metadata?: Record<string, never>;
+                provider_metadata?: unknown;
                 related?: {
                   data?: ({
                       id?: string;
@@ -8886,7 +8855,7 @@ export interface components {
                               caption?: string;
                               width?: number;
                               height?: number;
-                              formats?: Record<string, never>;
+                              formats?: unknown;
                               hash?: string;
                               ext?: string;
                               mime?: string;
@@ -8895,7 +8864,7 @@ export interface components {
                               url?: string;
                               previewUrl?: string;
                               provider?: string;
-                              provider_metadata?: Record<string, never>;
+                              provider_metadata?: unknown;
                               related?: {
                                 data?: ({
                                     id?: string;
@@ -8944,8 +8913,8 @@ export interface components {
                                                   attributes?: {
                                                     action?: string;
                                                     subject?: string;
-                                                    properties?: Record<string, never>;
-                                                    conditions?: Record<string, never>;
+                                                    properties?: unknown;
+                                                    conditions?: unknown;
                                                     role?: {
                                                       data?: {
                                                         id?: string;
@@ -9159,8 +9128,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -9244,7 +9213,7 @@ export interface components {
                               caption?: string;
                               width?: number;
                               height?: number;
-                              formats?: Record<string, never>;
+                              formats?: unknown;
                               hash?: string;
                               ext?: string;
                               mime?: string;
@@ -9253,7 +9222,7 @@ export interface components {
                               url?: string;
                               previewUrl?: string;
                               provider?: string;
-                              provider_metadata?: Record<string, never>;
+                              provider_metadata?: unknown;
                               related?: {
                                 data?: ({
                                     id?: string;
@@ -9287,7 +9256,7 @@ export interface components {
                                             caption?: string;
                                             width?: number;
                                             height?: number;
-                                            formats?: Record<string, never>;
+                                            formats?: unknown;
                                             hash?: string;
                                             ext?: string;
                                             mime?: string;
@@ -9296,7 +9265,7 @@ export interface components {
                                             url?: string;
                                             previewUrl?: string;
                                             provider?: string;
-                                            provider_metadata?: Record<string, never>;
+                                            provider_metadata?: unknown;
                                             related?: {
                                               data?: ({
                                                   id?: string;
@@ -9345,8 +9314,8 @@ export interface components {
                                                                 attributes?: {
                                                                   action?: string;
                                                                   subject?: string;
-                                                                  properties?: Record<string, never>;
-                                                                  conditions?: Record<string, never>;
+                                                                  properties?: unknown;
+                                                                  conditions?: unknown;
                                                                   role?: {
                                                                     data?: {
                                                                       id?: string;
@@ -9519,7 +9488,7 @@ export interface components {
                 caption?: string;
                 width?: number;
                 height?: number;
-                formats?: Record<string, never>;
+                formats?: unknown;
                 hash?: string;
                 ext?: string;
                 mime?: string;
@@ -9528,7 +9497,7 @@ export interface components {
                 url?: string;
                 previewUrl?: string;
                 provider?: string;
-                provider_metadata?: Record<string, never>;
+                provider_metadata?: unknown;
                 related?: {
                   data?: ({
                       id?: string;
@@ -9562,7 +9531,7 @@ export interface components {
                               caption?: string;
                               width?: number;
                               height?: number;
-                              formats?: Record<string, never>;
+                              formats?: unknown;
                               hash?: string;
                               ext?: string;
                               mime?: string;
@@ -9571,7 +9540,7 @@ export interface components {
                               url?: string;
                               previewUrl?: string;
                               provider?: string;
-                              provider_metadata?: Record<string, never>;
+                              provider_metadata?: unknown;
                               related?: {
                                 data?: ({
                                     id?: string;
@@ -9620,8 +9589,8 @@ export interface components {
                                                   attributes?: {
                                                     action?: string;
                                                     subject?: string;
-                                                    properties?: Record<string, never>;
-                                                    conditions?: Record<string, never>;
+                                                    properties?: unknown;
+                                                    conditions?: unknown;
                                                     role?: {
                                                       data?: {
                                                         id?: string;
@@ -9846,8 +9815,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -9931,7 +9900,7 @@ export interface components {
                               caption?: string;
                               width?: number;
                               height?: number;
-                              formats?: Record<string, never>;
+                              formats?: unknown;
                               hash?: string;
                               ext?: string;
                               mime?: string;
@@ -9940,7 +9909,7 @@ export interface components {
                               url?: string;
                               previewUrl?: string;
                               provider?: string;
-                              provider_metadata?: Record<string, never>;
+                              provider_metadata?: unknown;
                               related?: {
                                 data?: ({
                                     id?: string;
@@ -9974,7 +9943,7 @@ export interface components {
                                             caption?: string;
                                             width?: number;
                                             height?: number;
-                                            formats?: Record<string, never>;
+                                            formats?: unknown;
                                             hash?: string;
                                             ext?: string;
                                             mime?: string;
@@ -9983,7 +9952,7 @@ export interface components {
                                             url?: string;
                                             previewUrl?: string;
                                             provider?: string;
-                                            provider_metadata?: Record<string, never>;
+                                            provider_metadata?: unknown;
                                             related?: {
                                               data?: ({
                                                   id?: string;
@@ -10032,8 +10001,8 @@ export interface components {
                                                                 attributes?: {
                                                                   action?: string;
                                                                   subject?: string;
-                                                                  properties?: Record<string, never>;
-                                                                  conditions?: Record<string, never>;
+                                                                  properties?: unknown;
+                                                                  conditions?: unknown;
                                                                   role?: {
                                                                     data?: {
                                                                       id?: string;
@@ -10206,7 +10175,7 @@ export interface components {
                 caption?: string;
                 width?: number;
                 height?: number;
-                formats?: Record<string, never>;
+                formats?: unknown;
                 hash?: string;
                 ext?: string;
                 mime?: string;
@@ -10215,7 +10184,7 @@ export interface components {
                 url?: string;
                 previewUrl?: string;
                 provider?: string;
-                provider_metadata?: Record<string, never>;
+                provider_metadata?: unknown;
                 related?: {
                   data?: ({
                       id?: string;
@@ -10249,7 +10218,7 @@ export interface components {
                               caption?: string;
                               width?: number;
                               height?: number;
-                              formats?: Record<string, never>;
+                              formats?: unknown;
                               hash?: string;
                               ext?: string;
                               mime?: string;
@@ -10258,7 +10227,7 @@ export interface components {
                               url?: string;
                               previewUrl?: string;
                               provider?: string;
-                              provider_metadata?: Record<string, never>;
+                              provider_metadata?: unknown;
                               related?: {
                                 data?: ({
                                     id?: string;
@@ -10307,8 +10276,8 @@ export interface components {
                                                   attributes?: {
                                                     action?: string;
                                                     subject?: string;
-                                                    properties?: Record<string, never>;
-                                                    conditions?: Record<string, never>;
+                                                    properties?: unknown;
+                                                    conditions?: unknown;
                                                     role?: {
                                                       data?: {
                                                         id?: string;
@@ -10522,8 +10491,8 @@ export interface components {
                                                 attributes?: {
                                                   action?: string;
                                                   subject?: string;
-                                                  properties?: Record<string, never>;
-                                                  conditions?: Record<string, never>;
+                                                  properties?: unknown;
+                                                  conditions?: unknown;
                                                   role?: {
                                                     data?: {
                                                       id?: string;
@@ -10607,7 +10576,7 @@ export interface components {
                               caption?: string;
                               width?: number;
                               height?: number;
-                              formats?: Record<string, never>;
+                              formats?: unknown;
                               hash?: string;
                               ext?: string;
                               mime?: string;
@@ -10616,7 +10585,7 @@ export interface components {
                               url?: string;
                               previewUrl?: string;
                               provider?: string;
-                              provider_metadata?: Record<string, never>;
+                              provider_metadata?: unknown;
                               related?: {
                                 data?: ({
                                     id?: string;
@@ -10650,7 +10619,7 @@ export interface components {
                                             caption?: string;
                                             width?: number;
                                             height?: number;
-                                            formats?: Record<string, never>;
+                                            formats?: unknown;
                                             hash?: string;
                                             ext?: string;
                                             mime?: string;
@@ -10659,7 +10628,7 @@ export interface components {
                                             url?: string;
                                             previewUrl?: string;
                                             provider?: string;
-                                            provider_metadata?: Record<string, never>;
+                                            provider_metadata?: unknown;
                                             related?: {
                                               data?: ({
                                                   id?: string;
@@ -10708,8 +10677,8 @@ export interface components {
                                                                 attributes?: {
                                                                   action?: string;
                                                                   subject?: string;
-                                                                  properties?: Record<string, never>;
-                                                                  conditions?: Record<string, never>;
+                                                                  properties?: unknown;
+                                                                  conditions?: unknown;
                                                                   role?: {
                                                                     data?: {
                                                                       id?: string;
@@ -10882,7 +10851,7 @@ export interface components {
                 caption?: string;
                 width?: number;
                 height?: number;
-                formats?: Record<string, never>;
+                formats?: unknown;
                 hash?: string;
                 ext?: string;
                 mime?: string;
@@ -10891,7 +10860,7 @@ export interface components {
                 url?: string;
                 previewUrl?: string;
                 provider?: string;
-                provider_metadata?: Record<string, never>;
+                provider_metadata?: unknown;
                 related?: {
                   data?: ({
                       id?: string;
@@ -10925,7 +10894,7 @@ export interface components {
                               caption?: string;
                               width?: number;
                               height?: number;
-                              formats?: Record<string, never>;
+                              formats?: unknown;
                               hash?: string;
                               ext?: string;
                               mime?: string;
@@ -10934,7 +10903,7 @@ export interface components {
                               url?: string;
                               previewUrl?: string;
                               provider?: string;
-                              provider_metadata?: Record<string, never>;
+                              provider_metadata?: unknown;
                               related?: {
                                 data?: ({
                                     id?: string;
@@ -10983,8 +10952,8 @@ export interface components {
                                                   attributes?: {
                                                     action?: string;
                                                     subject?: string;
-                                                    properties?: Record<string, never>;
-                                                    conditions?: Record<string, never>;
+                                                    properties?: unknown;
+                                                    conditions?: unknown;
                                                     role?: {
                                                       data?: {
                                                         id?: string;
@@ -11133,7 +11102,7 @@ export interface components {
         caption?: string;
         width?: number;
         height?: number;
-        formats?: Record<string, never>;
+        formats?: unknown;
         hash: string;
         ext?: string;
         mime: string;
@@ -11142,7 +11111,7 @@ export interface components {
         url: string;
         previewUrl?: string;
         provider: string;
-        provider_metadata?: Record<string, never>;
+        provider_metadata?: unknown;
         related?: (number | string)[];
         /** @example string or id */
         folder?: number | string;
@@ -11158,7 +11127,7 @@ export interface components {
         caption?: string;
         width?: number;
         height?: number;
-        formats?: Record<string, never>;
+        formats?: unknown;
         hash?: string;
         ext?: string;
         mime?: string;
@@ -11167,7 +11136,7 @@ export interface components {
         url?: string;
         previewUrl?: string;
         provider?: string;
-        provider_metadata?: Record<string, never>;
+        provider_metadata?: unknown;
         related?: {
           data?: ({
               id?: string;
@@ -11201,7 +11170,7 @@ export interface components {
                       caption?: string;
                       width?: number;
                       height?: number;
-                      formats?: Record<string, never>;
+                      formats?: unknown;
                       hash?: string;
                       ext?: string;
                       mime?: string;
@@ -11210,7 +11179,7 @@ export interface components {
                       url?: string;
                       previewUrl?: string;
                       provider?: string;
-                      provider_metadata?: Record<string, never>;
+                      provider_metadata?: unknown;
                       related?: {
                         data?: ({
                             id?: string;
@@ -11259,8 +11228,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -11384,7 +11353,7 @@ export interface components {
         caption?: string;
         width?: number;
         height?: number;
-        formats?: Record<string, never>;
+        formats?: unknown;
         hash?: string;
         ext?: string;
         mime?: string;
@@ -11393,7 +11362,7 @@ export interface components {
         url?: string;
         previewUrl?: string;
         provider?: string;
-        provider_metadata?: Record<string, never>;
+        provider_metadata?: unknown;
         related?: {
           data?: ({
               id?: string;
@@ -11427,7 +11396,7 @@ export interface components {
                       caption?: string;
                       width?: number;
                       height?: number;
-                      formats?: Record<string, never>;
+                      formats?: unknown;
                       hash?: string;
                       ext?: string;
                       mime?: string;
@@ -11436,7 +11405,7 @@ export interface components {
                       url?: string;
                       previewUrl?: string;
                       provider?: string;
-                      provider_metadata?: Record<string, never>;
+                      provider_metadata?: unknown;
                       related?: {
                         data?: ({
                             id?: string;
@@ -11485,8 +11454,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -11621,7 +11590,7 @@ export interface components {
         caption?: string;
         width?: number;
         height?: number;
-        formats?: Record<string, never>;
+        formats?: unknown;
         hash?: string;
         ext?: string;
         mime?: string;
@@ -11630,7 +11599,7 @@ export interface components {
         url?: string;
         previewUrl?: string;
         provider?: string;
-        provider_metadata?: Record<string, never>;
+        provider_metadata?: unknown;
         related?: {
           data?: ({
               id?: string;
@@ -11664,7 +11633,7 @@ export interface components {
                       caption?: string;
                       width?: number;
                       height?: number;
-                      formats?: Record<string, never>;
+                      formats?: unknown;
                       hash?: string;
                       ext?: string;
                       mime?: string;
@@ -11673,7 +11642,7 @@ export interface components {
                       url?: string;
                       previewUrl?: string;
                       provider?: string;
-                      provider_metadata?: Record<string, never>;
+                      provider_metadata?: unknown;
                       related?: {
                         data?: ({
                             id?: string;
@@ -11722,8 +11691,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -11847,7 +11816,7 @@ export interface components {
         caption?: string;
         width?: number;
         height?: number;
-        formats?: Record<string, never>;
+        formats?: unknown;
         hash?: string;
         ext?: string;
         mime?: string;
@@ -11856,7 +11825,7 @@ export interface components {
         url?: string;
         previewUrl?: string;
         provider?: string;
-        provider_metadata?: Record<string, never>;
+        provider_metadata?: unknown;
         related?: {
           data?: ({
               id?: string;
@@ -11890,7 +11859,7 @@ export interface components {
                       caption?: string;
                       width?: number;
                       height?: number;
-                      formats?: Record<string, never>;
+                      formats?: unknown;
                       hash?: string;
                       ext?: string;
                       mime?: string;
@@ -11899,7 +11868,7 @@ export interface components {
                       url?: string;
                       previewUrl?: string;
                       provider?: string;
-                      provider_metadata?: Record<string, never>;
+                      provider_metadata?: unknown;
                       related?: {
                         data?: ({
                             id?: string;
@@ -11948,8 +11917,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -12112,7 +12081,7 @@ export interface components {
                       caption?: string;
                       width?: number;
                       height?: number;
-                      formats?: Record<string, never>;
+                      formats?: unknown;
                       hash?: string;
                       ext?: string;
                       mime?: string;
@@ -12121,7 +12090,7 @@ export interface components {
                       url?: string;
                       previewUrl?: string;
                       provider?: string;
-                      provider_metadata?: Record<string, never>;
+                      provider_metadata?: unknown;
                       related?: {
                         data?: ({
                             id?: string;
@@ -12170,8 +12139,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -12330,7 +12299,7 @@ export interface components {
                       caption?: string;
                       width?: number;
                       height?: number;
-                      formats?: Record<string, never>;
+                      formats?: unknown;
                       hash?: string;
                       ext?: string;
                       mime?: string;
@@ -12339,7 +12308,7 @@ export interface components {
                       url?: string;
                       previewUrl?: string;
                       provider?: string;
-                      provider_metadata?: Record<string, never>;
+                      provider_metadata?: unknown;
                       related?: {
                         data?: ({
                             id?: string;
@@ -12388,8 +12357,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -12559,7 +12528,7 @@ export interface components {
                       caption?: string;
                       width?: number;
                       height?: number;
-                      formats?: Record<string, never>;
+                      formats?: unknown;
                       hash?: string;
                       ext?: string;
                       mime?: string;
@@ -12568,7 +12537,7 @@ export interface components {
                       url?: string;
                       previewUrl?: string;
                       provider?: string;
-                      provider_metadata?: Record<string, never>;
+                      provider_metadata?: unknown;
                       related?: {
                         data?: ({
                             id?: string;
@@ -12617,8 +12586,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -12777,7 +12746,7 @@ export interface components {
                       caption?: string;
                       width?: number;
                       height?: number;
-                      formats?: Record<string, never>;
+                      formats?: unknown;
                       hash?: string;
                       ext?: string;
                       mime?: string;
@@ -12786,7 +12755,7 @@ export interface components {
                       url?: string;
                       previewUrl?: string;
                       provider?: string;
-                      provider_metadata?: Record<string, never>;
+                      provider_metadata?: unknown;
                       related?: {
                         data?: ({
                             id?: string;
@@ -12835,8 +12804,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -13031,8 +13000,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -13242,8 +13211,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -13464,8 +13433,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -13675,8 +13644,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -13923,8 +13892,8 @@ export interface components {
                                                   attributes?: {
                                                     action?: string;
                                                     subject?: string;
-                                                    properties?: Record<string, never>;
-                                                    conditions?: Record<string, never>;
+                                                    properties?: unknown;
+                                                    conditions?: unknown;
                                                     role?: {
                                                       data?: {
                                                         id?: string;
@@ -14142,8 +14111,8 @@ export interface components {
                                                   attributes?: {
                                                     action?: string;
                                                     subject?: string;
-                                                    properties?: Record<string, never>;
-                                                    conditions?: Record<string, never>;
+                                                    properties?: unknown;
+                                                    conditions?: unknown;
                                                     role?: {
                                                       data?: {
                                                         id?: string;
@@ -14372,8 +14341,8 @@ export interface components {
                                                   attributes?: {
                                                     action?: string;
                                                     subject?: string;
-                                                    properties?: Record<string, never>;
-                                                    conditions?: Record<string, never>;
+                                                    properties?: unknown;
+                                                    conditions?: unknown;
                                                     role?: {
                                                       data?: {
                                                         id?: string;
@@ -14591,8 +14560,8 @@ export interface components {
                                                   attributes?: {
                                                     action?: string;
                                                     subject?: string;
-                                                    properties?: Record<string, never>;
-                                                    conditions?: Record<string, never>;
+                                                    properties?: unknown;
+                                                    conditions?: unknown;
                                                     role?: {
                                                       data?: {
                                                         id?: string;
@@ -14820,8 +14789,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -15042,8 +15011,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -15275,8 +15244,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -15497,8 +15466,8 @@ export interface components {
                                           attributes?: {
                                             action?: string;
                                             subject?: string;
-                                            properties?: Record<string, never>;
-                                            conditions?: Record<string, never>;
+                                            properties?: unknown;
+                                            conditions?: unknown;
                                             role?: {
                                               data?: {
                                                 id?: string;
@@ -15746,23 +15715,23 @@ export type external = Record<string, never>;
 export interface operations {
 
   "get/about": {
-    parameters?: {
-        /** @description Sort by attributes ascending (asc) or descending (desc) */
-        /** @description Retun page/pageSize (default: true) */
-        /** @description Page number (default: 0) */
-        /** @description Page size (default: 25) */
-        /** @description Offset value (default: 0) */
-        /** @description Number of entities to return (default: 25) */
-        /** @description Fields to return (ex: title,author) */
-        /** @description Relations to return */
+    parameters: {
       query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
         sort?: string;
+        /** @description Retun page/pageSize (default: true) */
         "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
         "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
         "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
         "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
         "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
         fields?: string;
+        /** @description Relations to return */
         populate?: string;
       };
     };
@@ -15891,23 +15860,23 @@ export interface operations {
     };
   };
   "get/categories": {
-    parameters?: {
-        /** @description Sort by attributes ascending (asc) or descending (desc) */
-        /** @description Retun page/pageSize (default: true) */
-        /** @description Page number (default: 0) */
-        /** @description Page size (default: 25) */
-        /** @description Offset value (default: 0) */
-        /** @description Number of entities to return (default: 25) */
-        /** @description Fields to return (ex: title,author) */
-        /** @description Relations to return */
+    parameters: {
       query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
         sort?: string;
+        /** @description Retun page/pageSize (default: true) */
         "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
         "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
         "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
         "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
         "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
         fields?: string;
+        /** @description Relations to return */
         populate?: string;
       };
     };
@@ -16136,23 +16105,23 @@ export interface operations {
     };
   };
   "get/countries": {
-    parameters?: {
-        /** @description Sort by attributes ascending (asc) or descending (desc) */
-        /** @description Retun page/pageSize (default: true) */
-        /** @description Page number (default: 0) */
-        /** @description Page size (default: 25) */
-        /** @description Offset value (default: 0) */
-        /** @description Number of entities to return (default: 25) */
-        /** @description Fields to return (ex: title,author) */
-        /** @description Relations to return */
+    parameters: {
       query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
         sort?: string;
+        /** @description Retun page/pageSize (default: true) */
         "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
         "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
         "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
         "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
         "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
         fields?: string;
+        /** @description Relations to return */
         populate?: string;
       };
     };
@@ -16381,23 +16350,23 @@ export interface operations {
     };
   };
   "get/features": {
-    parameters?: {
-        /** @description Sort by attributes ascending (asc) or descending (desc) */
-        /** @description Retun page/pageSize (default: true) */
-        /** @description Page number (default: 0) */
-        /** @description Page size (default: 25) */
-        /** @description Offset value (default: 0) */
-        /** @description Number of entities to return (default: 25) */
-        /** @description Fields to return (ex: title,author) */
-        /** @description Relations to return */
+    parameters: {
       query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
         sort?: string;
+        /** @description Retun page/pageSize (default: true) */
         "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
         "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
         "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
         "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
         "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
         fields?: string;
+        /** @description Relations to return */
         populate?: string;
       };
     };
@@ -16626,23 +16595,23 @@ export interface operations {
     };
   };
   "get/hero": {
-    parameters?: {
-        /** @description Sort by attributes ascending (asc) or descending (desc) */
-        /** @description Retun page/pageSize (default: true) */
-        /** @description Page number (default: 0) */
-        /** @description Page size (default: 25) */
-        /** @description Offset value (default: 0) */
-        /** @description Number of entities to return (default: 25) */
-        /** @description Fields to return (ex: title,author) */
-        /** @description Relations to return */
+    parameters: {
       query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
         sort?: string;
+        /** @description Retun page/pageSize (default: true) */
         "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
         "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
         "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
         "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
         "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
         fields?: string;
+        /** @description Relations to return */
         populate?: string;
       };
     };
@@ -16771,23 +16740,23 @@ export interface operations {
     };
   };
   "get/products": {
-    parameters?: {
-        /** @description Sort by attributes ascending (asc) or descending (desc) */
-        /** @description Retun page/pageSize (default: true) */
-        /** @description Page number (default: 0) */
-        /** @description Page size (default: 25) */
-        /** @description Offset value (default: 0) */
-        /** @description Number of entities to return (default: 25) */
-        /** @description Fields to return (ex: title,author) */
-        /** @description Relations to return */
+    parameters: {
       query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
         sort?: string;
+        /** @description Retun page/pageSize (default: true) */
         "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
         "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
         "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
         "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
         "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
         fields?: string;
+        /** @description Relations to return */
         populate?: string;
       };
     };
@@ -17016,23 +16985,23 @@ export interface operations {
     };
   };
   "get/upload/files": {
-    parameters?: {
-        /** @description Sort by attributes ascending (asc) or descending (desc) */
-        /** @description Retun page/pageSize (default: true) */
-        /** @description Page number (default: 0) */
-        /** @description Page size (default: 25) */
-        /** @description Offset value (default: 0) */
-        /** @description Number of entities to return (default: 25) */
-        /** @description Fields to return (ex: title,author) */
-        /** @description Relations to return */
+    parameters: {
       query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
         sort?: string;
+        /** @description Retun page/pageSize (default: true) */
         "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
         "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
         "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
         "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
         "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
         fields?: string;
+        /** @description Relations to return */
         populate?: string;
       };
     };

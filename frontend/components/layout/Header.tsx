@@ -3,11 +3,11 @@ import Link from 'next/link';
 import HeaderLinks from './HeaderLinks';
 
 import CartButton from '~/components/cart/CartButton';
-import { useBootstrap } from '~/utils';
+// import { useBootstrap } from '~/utils';
 
 
-const Header = (): JSX.Element => {
-    useBootstrap('Offcanvas');
+const Header = async () => {
+    // useBootstrap('Offcanvas');
 
     return (
         <header >

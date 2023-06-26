@@ -1,0 +1,68 @@
+import { GetStaticProps, NextPage } from 'next';
+import Link from 'next/link';
+
+import Features from '~/components/layout/Features';
+import Hero from '~/components/layout/Hero';
+import ProductsList from '~/components/products/ProductsList';
+import Seo from '~/components/utils/Seo';
+import { getHero, getProductsPreviews } from '~/requests';
+import { getFeatures } from '~/requests/getFeatures';
+import { IHero, IFeature, IProductPreview } from '~/types';
+
+
+// interface Props {
+//     hero: IHero
+//     features: IFeature[]
+//     newProducts: IProductPreview[]
+//     discountProducts: IProductPreview[]
+// }
+
+const HomePage = () => {
+    return (
+        <>
+            <Seo title="Home" />
+            {/* <Hero {...hero} /> */}
+            <div className="container mt-4">
+                <h2 className="text-center">New Products</h2>
+                {/* <ProductsList products={newProducts} /> */}
+            </div>
+            {/* <Features features={features} /> */}
+            <div className="container mt-4">
+                <h2 className="text-center">Big Discount</h2>
+                {/* <ProductsList products={discountProducts} /> */}
+            </div>
+            <div className="text-center my-3">
+                <Link className="btn btn-primary" href="/product">
+                    Shom more
+                </Link>
+            </div>
+        </>
+    );
+};
+
+// export const getStaticProps: GetStaticProps<Props> = async () => {
+//     const [
+//         { products: newProducts },
+//         { products: discountProducts },
+//         hero,
+//         features,
+//     ] = await Promise.all([
+//         getProductsPreviews({
+//             'pagination[page]': 0,
+//             'pagination[pageSize]': 6,
+//             'sort': 'createdAt',
+//         }),
+//         getProductsPreviews({
+//             'pagination[page]': 0,
+//             'pagination[pageSize]': 6,
+//             'sort': 'discount:desc',
+//         }),
+//         getHero(),
+//         getFeatures(),
+//     ]);
+
+//     return { props: { newProducts, discountProducts, hero, features } };
+
+// };
+
+export default HomePage;

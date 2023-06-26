@@ -1,7 +1,8 @@
-import { useRouter } from 'next/router';
+'use client';
+// import { useRouter } from 'next/router';
 import { FC, ReactElement, ReactNode, useEffect, useState } from 'react';
 
-import NotFoundPage from '~/pages/404';
+import NotFoundPage from '~/off-pages/404';
 import { useAuthStore } from '~/store';
 
 
@@ -23,7 +24,7 @@ const ProtectedComponent: FC<Props> = ({
     authNeeded = true,
 }) => {
     const isAuth = useAuthStore((state) => Boolean(state.user));
-    const router = useRouter();
+    // const router = useRouter();
 
     const [isMounted, setIsMounted] = useState(false);
 
@@ -35,11 +36,11 @@ const ProtectedComponent: FC<Props> = ({
         setIsMounted(true);
 
         if (needProtect && redirect === 'back') {
-            router.back();
+            // router.back();
             return;
         }
         if (needProtect && redirect) {
-            router.replace(redirect);
+            // router.replace(redirect);
         }
     }, [isAuth]);
 
