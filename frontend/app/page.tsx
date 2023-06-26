@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import Hero from '~/components/layout/Hero';
-import { CREATOR, DEFAULT_DESCRIPTION } from '~/constants';
+import { DEFAULT_DESCRIPTION } from '~/constants';
 
 
 export const generateMetadata = (): Metadata => {
@@ -14,11 +14,6 @@ export const generateMetadata = (): Metadata => {
         keywords: ['grocery', 'shop'],
         openGraph: {
             type: 'website',
-            title,
-        },
-        twitter: {
-            card: 'summary',
-            creator: CREATOR,
             title,
         },
     };
