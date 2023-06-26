@@ -1,9 +1,9 @@
-'use client';
-// import { useRouter } from 'next/router';
-import { FC, ReactElement, ReactNode, useEffect, useState } from 'react';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { FC, ReactElement, ReactNode } from 'react';
 
 import NotFoundPage from '~/off-pages/404';
-import { useAuthStore } from '~/store';
+import { getMe } from '~/requests';
 
 
 interface Props {
@@ -15,37 +15,27 @@ interface Props {
     children?: ReactNode
 }
 
-const ProtectedComponent: FC<Props> = ({
+const ProtectedComponent: FC<Props> = async ({
     children,
-    redirect,
+    redirect: redirectPath,
     notFound,
     render,
-    fallback,
     authNeeded = true,
 }) => {
-    const isAuth = useAuthStore((state) => Boolean(state.user));
-    // const router = useRouter();
-
-    const [isMounted, setIsMounted] = useState(false);
+    const tocken = cookies().get('token')?.value;
+    const user = tocken ? await getMe(tocken).catch(() => null) : null;
+    const isAuth = Boolean(user);
 
     const needProtect = authNeeded
         ? !isAuth
         : isAuth;
 
-    useEffect(() => {
-        setIsMounted(true);
 
-        if (needProtect && redirect === 'back') {
-            // router.back();
-            return;
-        }
-        if (needProtect && redirect) {
-            // router.replace(redirect);
-        }
-    }, [isAuth]);
+    if (needProtect && redirectPath) {
+        redirect(redirectPath);
+        return null;
+    }
 
-
-    if (!isMounted) return fallback || null;
 
     if (needProtect && notFound) return <NotFoundPage />;
 
