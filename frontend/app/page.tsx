@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
+import Hero from '~/components/layout/Hero';
 import { CREATOR, DEFAULT_DESCRIPTION } from '~/constants';
 
 
@@ -26,7 +27,7 @@ export const generateMetadata = (): Metadata => {
 const HomePage = () => {
     return (
         <>
-            {/* <Hero {...hero} /> */}
+            <Hero />
             <div className="container mt-4">
                 <h2 className="text-center">New Products</h2>
                 {/* <ProductsList products={newProducts} /> */}

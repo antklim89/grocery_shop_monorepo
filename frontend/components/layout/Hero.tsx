@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import { memo } from 'react';
 
 import LazyReactMarkdown from '~/components/utils/LazyReactMarkdown';
 import StrapiImage from '~/components/utils/StrapiImage';
-import { IHero } from '~/types';
+import { getHero } from '~/requests';
 
 
-const Hero = ({ image, title, text }: IHero): JSX.Element => {
+const Hero = async () => {
+    const { image, title, text } = await getHero();
+
     return (
         <section className="container-md">
             <div className="row">
@@ -35,4 +36,4 @@ const Hero = ({ image, title, text }: IHero): JSX.Element => {
     );
 };
 
-export default memo(Hero);
+export default Hero;
