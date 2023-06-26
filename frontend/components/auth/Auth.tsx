@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { FC, FormEvent, useEffect, useState } from 'react';
 
