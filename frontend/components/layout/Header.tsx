@@ -3,12 +3,9 @@ import Link from 'next/link';
 import HeaderLinks from './HeaderLinks';
 
 import CartButton from '~/components/cart/CartButton';
-// import { useBootstrap } from '~/utils';
 
 
 const Header = async () => {
-    // useBootstrap('Offcanvas');
-
     return (
         <header >
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg shadow mb-4">

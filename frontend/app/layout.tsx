@@ -6,13 +6,14 @@ import '@fontsource/roboto/400-italic.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/700-italic.css';
 
+import Script from 'next/script';
 import { ReactNode } from 'react';
 
 import Footer from '~/components/layout/Footer';
 import Header from '~/components/layout/Header';
 
 
-const MyApp = ({ children }: {children: ReactNode}): JSX.Element => {
+const MyApp = async ({ children }: {children: ReactNode}) => {
     return (
         <html lang="en">
             <body>
@@ -22,6 +23,7 @@ const MyApp = ({ children }: {children: ReactNode}): JSX.Element => {
                 </main>
                 <Footer />
             </body>
+            <Script src="/bootstrap.min.js" />
         </html>
     );
 };
