@@ -5,11 +5,9 @@ import ChangePassword from './ChangePassword';
 import UserInformationForm from './UserInformationForm';
 
 import { useAuthStore } from '~/store';
-import { useBootstrap } from '~/utils';
 
 
 const Profile: FC = () => {
-    useBootstrap('Tab');
     const user = useAuthStore((state) => state.user);
 
     if (!user) return null;
