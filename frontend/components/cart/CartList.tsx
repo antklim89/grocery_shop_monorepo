@@ -1,16 +1,15 @@
 'use client';
 import Link from 'next/link';
 
-import Price from '../utils/Price';
-
 import CartListItem from './CartListItem';
 
-import ProtectedComponent from '~/components/utils/ProtectedComponent';
-import { useCartStore } from '~/store';
+import Price from '~/components/utils/Price';
+import { useAuthStore, useCartStore } from '~/store';
 
 
 const CartList = (): JSX.Element => {
     const cartItems = useCartStore((state) => Object.values(state.cartItems));
+    const user = useAuthStore((state) => state.user);
 
     if (cartItems.length === 0) {
         return (
@@ -33,17 +32,17 @@ const CartList = (): JSX.Element => {
                         <Price price={totalPrice} />
                     </p>
                 </div>
-                <ProtectedComponent
-                    render={(
+                { user
+                    ? (
+                        <Link className="btn btn-primary btn-lg align-self-center" href="/order">
+                            Create Order
+                        </Link>
+                    )
+                    : (
                         <Link className="btn btn-primary btn-lg align-self-center" href="/login">
                             Login to confirm order...
                         </Link>
                     )}
-                >
-                    <Link className="btn btn-primary btn-lg align-self-center" href="/order">
-                        Create Order
-                    </Link>
-                </ProtectedComponent>
             </div>
         </div>
     );
