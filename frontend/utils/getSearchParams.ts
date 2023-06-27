@@ -1,19 +1,21 @@
+import { ReadonlyURLSearchParams } from 'next/navigation';
+
 import { PAGINATION_QUERY_NAME } from '~/constants';
 
 
-type Query = import('querystring').ParsedUrlQuery | string | string[][] | Record<string, string> | URLSearchParams | undefined | null
+type Query = import('querystring').ParsedUrlQuery | ReadonlyURLSearchParams | string | string[][] | Record<string, string> | URLSearchParams | undefined | null
 
 interface Arguments {
     queryName: string;
     query: Query;
     value: number | string | string[];
-    removeByValue?: number | string | string[] ;
+    removeByValue?: number | string | string[] | null;
 }
 
 export function getSearchParams({ queryName, query, value, removeByValue }: Arguments): string {
     const params = new URLSearchParams(query as Record<string, string> || '');
 
-    if (typeof removeByValue !== 'undefined' && `${value}` === `${removeByValue}`) {
+    if ((typeof removeByValue !== 'undefined') && `${value}` === `${removeByValue}`) {
         params.delete(queryName);
     } else if (params.has(queryName)) {
         params.set(queryName, `${value}`);
