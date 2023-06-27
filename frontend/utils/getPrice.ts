@@ -1,4 +1,3 @@
-/* eslint-disable no-undefined */
 
 
 interface PriceArgs {
@@ -7,8 +6,9 @@ interface PriceArgs {
     qty?: number;
 }
 
-const formatter = Intl.NumberFormat(undefined, {
+const formatter = Intl.NumberFormat('en-GB', {
     maximumFractionDigits: 2,
+    notation: 'standard',
 });
 
 
