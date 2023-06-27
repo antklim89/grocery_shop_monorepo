@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { Features } from '~/components';
+import Features from '~/components/layout/Features';
 import Hero from '~/components/layout/Hero';
+import ProductsList from '~/components/products/ProductsList';
 import { DEFAULT_DESCRIPTION } from '~/constants';
+import { getProductsPreviews } from '~/requests';
 
 
 export const generateMetadata = (): Metadata => {
@@ -20,18 +22,34 @@ export const generateMetadata = (): Metadata => {
     };
 };
 
-const HomePage = () => {
+const HomePage = async () => {
+    const [
+        { products: newProducts },
+        { products: discountProducts },
+    ] = await Promise.all([
+        getProductsPreviews({
+            'pagination[page]': 0,
+            'pagination[pageSize]': 6,
+            'sort': 'createdAt',
+        }),
+        getProductsPreviews({
+            'pagination[page]': 0,
+            'pagination[pageSize]': 6,
+            'sort': 'discount:desc',
+        }),
+    ]);
+
     return (
         <>
             <Hero />
             <div className="container mt-4">
                 <h2 className="text-center">New Products</h2>
-                {/* <ProductsList products={newProducts} /> */}
+                <ProductsList products={newProducts} />
             </div>
             <Features />
             <div className="container mt-4">
                 <h2 className="text-center">Big Discount</h2>
-                {/* <ProductsList products={discountProducts} /> */}
+                <ProductsList products={discountProducts} />
             </div>
             <div className="text-center my-3">
                 <Link className="btn btn-primary" href="/product">
