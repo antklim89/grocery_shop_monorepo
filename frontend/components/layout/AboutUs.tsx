@@ -1,9 +1,11 @@
 import LazyReactMarkdown from '~/components/utils/LazyReactMarkdown';
 import StrapiImage from '~/components/utils/StrapiImage';
-import { IAbout } from '~/types';
+import { getAbout } from '~/requests';
 
 
-const About = ({ image, body }: IAbout): JSX.Element => {
+const About = async () => {
+    const { body, image } = await getAbout();
+
     return (
         <section className="container mb-5">
             <div className="row">
