@@ -5,7 +5,9 @@ import { getMe } from '~/requests';
 
 
 export const metadata = {
-    title: 'Profile',
+    title: {
+        default: 'Profile',
+    },
     openGraph: {
         title: 'Profile',
     },

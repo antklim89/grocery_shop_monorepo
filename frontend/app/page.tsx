@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Features from '~/components/layout/Features';
 import Hero from '~/components/layout/Hero';
 import ProductsList from '~/components/products/ProductsList';
-import { DEFAULT_DESCRIPTION } from '~/constants';
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from '~/constants';
 import { getProductsPreviews } from '~/requests';
 
 
@@ -12,7 +12,10 @@ export const generateMetadata = (): Metadata => {
     const title = 'Home';
     const description = DEFAULT_DESCRIPTION;
     return {
-        title,
+        title: {
+            default: title,
+            template: `%s | ${DEFAULT_TITLE}`,
+        },
         description,
         keywords: ['grocery', 'shop'],
         openGraph: {
