@@ -1,21 +1,16 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { FC } from 'react';
 
 import CatalogItem from './CatalogItem';
 
 import { CATEGORY_QUERY_NAME, COUNTRY_QUERY_NAME } from '~/constants';
-import { ICatalogItem } from '~/types';
+import { getCategories, getCounties } from '~/requests';
 import { cls } from '~/utils';
 
 
-interface Props {
-    categories: ICatalogItem[]
-    countries: ICatalogItem[]
-}
-
-const Catalog: FC<Props> = ({ categories, countries }) => {
-    const { query } = useRouter();
+const Catalog: FC = async () => {
+    const countries = await getCounties();
+    const categories = await getCategories();
 
     return (
         <nav>
@@ -24,11 +19,9 @@ const Catalog: FC<Props> = ({ categories, countries }) => {
                     className={cls(
                         'list-group-item',
                         'list-group-item-action',
-                        (!query.category || !query.country) && 'active',
                     )}
                     href="/product"
                     role="listitem"
-
                 >
                     <b>All</b>
                 </Link>

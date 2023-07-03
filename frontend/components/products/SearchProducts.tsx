@@ -1,4 +1,5 @@
-import { useRouter } from 'next/router';
+'use client';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { FC, HTMLAttributes, useRef, useState } from 'react';
 
 import { SEARCH_QUERY_NAME } from '~/constants';
@@ -6,8 +7,9 @@ import { cls, getSearchParams } from '~/utils';
 
 
 const SearchProducts: FC<HTMLAttributes<HTMLInputElement>> = ({ className, ...props }) => {
-    const { replace, query } = useRouter();
-    const [searchValue, setSearchValue] = useState(query[SEARCH_QUERY_NAME] as string || '');
+    const { replace } = useRouter();
+    const query = useSearchParams();
+    const [searchValue, setSearchValue] = useState(query.get(SEARCH_QUERY_NAME) as string || '');
     const prevSearchValue = useRef<string|null>(null);
 
     const handleSearch = async () => {
@@ -28,7 +30,7 @@ const SearchProducts: FC<HTMLAttributes<HTMLInputElement>> = ({ className, ...pr
                 type="text"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                 {...props}
             />
             <button

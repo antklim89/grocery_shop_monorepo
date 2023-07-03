@@ -1,4 +1,5 @@
-import { useRouter } from 'next/router';
+'use client';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import { PAGINATION_QUERY_NAME } from '~/constants';
@@ -12,7 +13,8 @@ interface PaginationProps {
 
 
 const Pagination = ({ pagination: { page = 1, pageCount } }: PaginationProps) => {
-    const { replace, query } = useRouter();
+    const { replace } = useRouter();
+    const query = useSearchParams();
 
     const getNextPage = useCallback(() => {
         const nextPage = Math.min(page + 1, pageCount);

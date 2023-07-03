@@ -1,5 +1,6 @@
+'use client';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import { FC, HTMLAttributes } from 'react';
 
 import { SORT_QUERY_NAME } from '~/constants';
@@ -13,9 +14,9 @@ interface Props extends HTMLAttributes<HTMLAnchorElement> {
 
 
 const SortProducts: FC<Props> = ({ value, children, className, isDefault, ...props }) => {
-    const { query } = useRouter();
+    const query = useSearchParams();
 
-    const params = new URLSearchParams(query as Record<string, string> || '');
+    const params = new URLSearchParams(Array.from(query.entries()));
 
     const [currentValue, direction] = params.get(SORT_QUERY_NAME)?.split(':') || [];
 

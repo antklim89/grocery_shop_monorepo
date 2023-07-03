@@ -1,4 +1,3 @@
-import { FC, useMemo } from 'react';
 
 import Catalog from './Catalog';
 import ProductsList from './ProductsList';
@@ -6,19 +5,11 @@ import SearchProducts from './SearchProducts';
 import SortProducts from './SortProducts';
 
 import Pagination from '~/components/utils/Pagination';
-import { IProductPreview, ICatalogItem, IPagination } from '~/types';
+import { getProductsPreviews } from '~/requests';
 
 
-interface ProductsPageProps {
-    products: IProductPreview[]
-    categories: ICatalogItem[]
-    countries: ICatalogItem[]
-    pagination: IPagination
-}
-
-
-const ProductsBlock: FC<ProductsPageProps> = ({ products, categories, countries, pagination }) => {
-    const catalog = useMemo(() => <Catalog categories={categories} countries={countries} />, []);
+const ProductsBlock = async ({ searchParams }: { searchParams: Record<string, string|undefined> }) => {
+    const { products, pagination } = await getProductsPreviews(searchParams);
 
     return (
         <div className="container">
@@ -45,7 +36,7 @@ const ProductsBlock: FC<ProductsPageProps> = ({ products, categories, countries,
                         />
                     </div>
                     <div className="offcanvas-body">
-                        {catalog}
+                        <Catalog />
                     </div>
                 </div>
             </div>
@@ -56,7 +47,7 @@ const ProductsBlock: FC<ProductsPageProps> = ({ products, categories, countries,
 
             <div className="row">
                 <div className="col-12 col-xl-2 d-none d-xl-block">
-                    {catalog}
+                    <Catalog />
                 </div>
                 <div className="col-12 col-xl-10 position-relative">
                     <div className="breadcrumb d-flex justify-content-end me-3">
