@@ -9,8 +9,7 @@ import { cls } from '~/utils';
 
 
 const Catalog: FC = async () => {
-    const countries = await getCounties();
-    const categories = await getCategories();
+    const [countries, categories] = await Promise.all([getCounties(), getCategories()]);
 
     return (
         <nav>
