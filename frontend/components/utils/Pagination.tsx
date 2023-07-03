@@ -29,7 +29,7 @@ const Pagination = ({ pagination: { page = 1, pageCount } }: PaginationProps) =>
     }, [page]);
 
     const getPage = (value: number) => () => {
-        const pageToGo = getSearchParams({ queryName: PAGINATION_QUERY_NAME, query, value, removeByValue: '1' });
+        const pageToGo = getSearchParams({ queryName: PAGINATION_QUERY_NAME, query, value });
         replace(pageToGo);
     };
 
@@ -44,27 +44,29 @@ const Pagination = ({ pagination: { page = 1, pageCount } }: PaginationProps) =>
                         type="button"
                         onClick={getPrevPage}
                     >
-                        Previous
+                        {'<'}
                     </button>
                 </li>
-                {Array.from({ length: pageCount }).map((_, index) => (
-                    <li className="page-item" key={index as number}>
-                        <button
-                            className={cls('page-link', page === index + 1 && 'active')}
-                            type="button"
-                            onClick={getPage(index + 1)}
-                        >
-                            {index + 1}
-                        </button>
-                    </li>
-                ))}
+                {[page - 2, page - 1, page, page + 1, page + 2]
+                    .filter((i) => (i >= 1) && (i <= pageCount))
+                    .map((index) => (
+                        <li className="page-item" key={index}>
+                            <button
+                                className={cls('page-link', page === index && 'active')}
+                                type="button"
+                                onClick={getPage(index)}
+                            >
+                                {index}
+                            </button>
+                        </li>
+                    ))}
                 <li className="page-item">
                     <button
                         className={cls('page-link', page >= pageCount && 'disabled')}
                         type="button"
                         onClick={getNextPage}
                     >
-                        Next
+                        {'>'}
                     </button>
                 </li>
             </ul>
