@@ -1,6 +1,6 @@
+'use client';
 import { FC, FormEvent, useReducer } from 'react';
 
-import NoSsr from '~/components/utils/NoSsr';
 import Price from '~/components/utils/Price';
 import { useCartStore } from '~/store';
 import { ICart, IProduct } from '~/types';
@@ -41,13 +41,11 @@ const ProductOrder: FC<IProduct> = (product) => {
                     <Price price={price} />
                 </p>
                 <p>
-                    <NoSsr>
-                        Total price for{' '}{cartItem.qty}{' '}{unit}:
-                        <br />
-                        <span className="big bold">
-                            <Price price={price} qty={cartItem.qty} />
-                        </span>
-                    </NoSsr>
+                    Total price for{' '}{cartItem.qty}{' '}{unit}:
+                    <br />
+                    <span className="big bold">
+                        <Price price={price} qty={cartItem.qty} />
+                    </span>
                 </p>
             </div>
 
@@ -60,33 +58,31 @@ const ProductOrder: FC<IProduct> = (product) => {
                 className="d-flex flex-column justify-content-end flex-column flex-grow-1"
                 onSubmit={handleOrder}
             >
-                <NoSsr>
-                    <label className="form-label my-2" htmlFor="qte">
-                        Quantity: ({unit})
+                <label className="form-label my-2" htmlFor="qte">
+                    Quantity: ({unit})
+                    <input
+                        className="form-control"
+                        id="qte"
+                        type="number"
+                        value={cartItem.qty}
+                        onChange={(e) => setCartItem({ qty: Number(e.target.value) })}
+                    />
+                </label>
+                {cartItems[id]
+                    ? (
                         <input
-                            className="form-control"
-                            id="qte"
-                            type="number"
-                            value={cartItem.qty}
-                            onChange={(e) => setCartItem({ qty: Number(e.target.value) })}
+                            className="btn btn-primary my-2"
+                            type="submit"
+                            value="Remove from Cart"
                         />
-                    </label>
-                    {cartItems[id]
-                        ? (
-                            <input
-                                className="btn btn-primary my-2"
-                                type="submit"
-                                value="Remove from Cart"
-                            />
-                        )
-                        : (
-                            <input
-                                className="btn btn-primary my-2"
-                                type="submit"
-                                value="Place to Cart"
-                            />
-                        )}
-                </NoSsr>
+                    )
+                    : (
+                        <input
+                            className="btn btn-primary my-2"
+                            type="submit"
+                            value="Place to Cart"
+                        />
+                    )}
             </form>
         </div>
     );

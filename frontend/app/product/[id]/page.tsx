@@ -1,8 +1,34 @@
+import { Metadata } from 'next';
 
-const Product = () => {
+import Product from '~/components/products/Product';
+import NotFound from '~/components/utils/NotFound';
+import { getProduct, getProductsPreviews } from '~/requests';
+
+
+export const generateMetadata = async ({ params }: {params: {id: string}}): Promise<Metadata> => {
+    const product = await getProduct(Number(params.id));
+
+    if (!product) return { title: 'Product' };
+    return {
+        title: product.name,
+        description: product.description,
+        keywords: [product.name, product.category.name, product.country.name],
+    };
+};
+
+export const generateStaticParams = async () => {
+    const { products } = await getProductsPreviews();
+
+    return products.map((product) => ({ id: product.id.toString() }));
+};
+
+const ProductPage = async ({ params }: {params: {id: string}}) => {
+    const product = await getProduct(Number(params.id));
+
+    if (!product) return <NotFound />;
     return (
-        <div>Product</div>
+        <Product {...product} />
     );
 };
 
-export default Product;
+export default ProductPage;

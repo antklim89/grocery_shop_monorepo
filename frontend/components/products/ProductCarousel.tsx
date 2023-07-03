@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import StrapiImage from '~/components/utils/StrapiImage';
 import { IStrapiImage } from '~/types';
-import { cls, useBootstrap } from '~/utils';
+import { cls } from '~/utils';
 
 
 interface Props {
@@ -11,8 +11,6 @@ interface Props {
 
 
 const ProductCarousel: FC<Props> = ({ images }) => {
-    useBootstrap('Carousel');
-
     return (
         <div className="carousel slide" data-bs-ride="carousel" id="images-carousel">
             <div className="carousel-inner">

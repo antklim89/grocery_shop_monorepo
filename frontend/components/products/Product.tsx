@@ -1,9 +1,9 @@
 import { FC } from 'react';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 import ProductCarousel from './ProductCarousel';
 import ProductOrder from './ProductOrder';
 
-import LazyReactMarkdown from '~/components/utils/LazyReactMarkdown';
 import { IProduct } from '~/types';
 
 
@@ -18,7 +18,7 @@ const Product: FC<IProduct> = (product) => {
                     <ProductOrder {...product} />
                 </div>
             </div>
-            <LazyReactMarkdown className="my-3">{product.description}</LazyReactMarkdown>
+            <ReactMarkdown className="my-3">{product.description}</ReactMarkdown>
         </article>
     );
 };
