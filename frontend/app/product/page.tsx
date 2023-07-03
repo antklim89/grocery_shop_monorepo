@@ -1,14 +1,15 @@
 import { Metadata } from 'next';
 
 import ProductsBlock from '~/components/products/ProductsBlock';
+import { getCategories, getCounties } from '~/requests';
 
 
-export const getMetadata = (): Metadata => {
-
+export const generateMetadata = async (): Promise<Metadata> => {
+    const [categories, countries] = await Promise.all([getCategories(), getCounties()]);
     return {
         title: 'Products',
         description: 'Product list.',
-
+        keywords: [...categories.map((i) => i.name), ...countries.map((i) => i.name)],
     };
 };
 
