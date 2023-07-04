@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 
-import { ProtectedComponent, Auth } from '~/components';
+import Auth from '~/components/auth/Auth';
+import ProtectedComponent from '~/components/utils/ProtectedComponent';
 
 
 export const metadata: Metadata = {
