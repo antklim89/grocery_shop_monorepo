@@ -1,12 +1,15 @@
-import Auth from '~/components/auth/Auth';
-import ProtectedComponent from '~/components/utils/ProtectedComponent';
-import Seo from '~/components/utils/Seo';
+import { Metadata } from 'next';
 
+import { ProtectedComponent, Auth } from '~/components';
+
+
+export const metadata: Metadata = {
+    title: 'Login',
+};
 
 const LoginPage = (): JSX.Element => {
     return (
         <ProtectedComponent authNeeded={false} redirect="/">
-            <Seo description="Login page." title="Login" />
             <Auth />
         </ProtectedComponent>
     );
