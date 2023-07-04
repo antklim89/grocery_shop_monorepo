@@ -37,7 +37,7 @@ const Auth: FC<{isSignup?: boolean}> = ({ isSignup }) => {
 
 
     return (
-        <div className="container">
+        <div className="container" style={{ maxWidth: 576 }}>
             <h1 className="text-center text-primary">{isSignup ? 'Sign Up' : 'Log In'}
             </h1>
             <form className="p-5 border" onSubmit={handleLogin}>
