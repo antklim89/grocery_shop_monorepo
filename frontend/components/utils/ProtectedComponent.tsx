@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { FC, ReactElement, ReactNode } from 'react';
 
-import NotFoundPage from '~/off-pages/404';
+import NotFound from '~/components/utils/NotFound';
 import { getMe } from '~/requests';
 
 
@@ -22,8 +22,8 @@ const ProtectedComponent: FC<Props> = async ({
     render,
     authNeeded = true,
 }) => {
-    const tocken = cookies().get('token')?.value;
-    const user = tocken ? await getMe(tocken).catch(() => null) : null;
+    const token = cookies().get('token')?.value;
+    const user = token ? await getMe(token).catch(() => null) : null;
     const isAuth = Boolean(user);
 
     const needProtect = authNeeded
@@ -37,7 +37,7 @@ const ProtectedComponent: FC<Props> = async ({
     }
 
 
-    if (needProtect && notFound) return <NotFoundPage />;
+    if (needProtect && notFound) return <NotFound />;
 
     if (needProtect && render) return render;
 
