@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 import LogoutButton from '~/components/auth/LogoutButton';
 import Loading from '~/components/utils/Loading';
-import NoSsr from '~/components/utils/NoSsr';
 import ProtectedComponent from '~/components/utils/ProtectedComponent';
 import { cls } from '~/utils/cls';
 
@@ -55,11 +54,9 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                 )}
             >
                 <li className="nav-item me-1">
-                    <NoSsr>
-                        <Link className="nav-link btn btn-link" href="/profile">
-                            Profile
-                        </Link>
-                    </NoSsr>
+                    <Link className="nav-link btn btn-link" href="/profile">
+                        Profile
+                    </Link>
                 </li>
                 <li className="nav-item me-5">
                     <LogoutButton
