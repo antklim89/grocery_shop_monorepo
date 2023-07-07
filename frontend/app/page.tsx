@@ -44,15 +44,15 @@ const HomePage = async () => {
 
     return (
         <>
-            {/* <Hero /> */}
+            <Hero />
             <div className="container mt-4">
                 <h2 className="text-center">New Products</h2>
                 <ProductsList products={newProducts} />
             </div>
-            {/* <Features /> */}
+            <Features />
             <div className="container mt-4">
                 <h2 className="text-center">Big Discount</h2>
-                {/* <ProductsList products={discountProducts} /> */}
+                <ProductsList products={discountProducts} />
             </div>
             <div className="text-center my-3">
                 <Link className="btn btn-primary" href="/product">
