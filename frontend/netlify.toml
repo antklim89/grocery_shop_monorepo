@@ -1,2 +1,5 @@
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  YARN_FLAGS = "--ignore-engines"
