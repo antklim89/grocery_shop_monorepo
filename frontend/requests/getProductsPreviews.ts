@@ -12,7 +12,6 @@ export async function getProductsPreviews(query: Record<string, unknown> = {}) {
         'pagination[pageSize]': 10,
         ...query,
     } }).json<ProductsPreviewResponse>();
-    console.log('===== \n data', data);
 
     const products = await productPreviewsSchema.parseAsync(data);
 
