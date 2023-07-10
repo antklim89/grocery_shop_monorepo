@@ -77,7 +77,7 @@ const ProductCard: FC<IProductPreview> = (product) => {
                         type="submit"
                         onClick={handleToggleCart}
                     >
-                        <NoSsr>
+                        <NoSsr fallback={<span>&nbsp;</span>}>
                             {isPoroductInCart ? 'Remove from Cart' : 'Place to Cart'}
                         </NoSsr>
                     </button>

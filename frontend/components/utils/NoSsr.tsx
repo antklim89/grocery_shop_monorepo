@@ -2,7 +2,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 
 
-const NoSsr = ({ children }: {children: ReactNode}) => {
+const NoSsr = ({ children, fallback }: {children: ReactNode, fallback?: ReactNode}) => {
     const [inited, setInited] = useState(false);
 
     useEffect(() => {
@@ -10,7 +10,7 @@ const NoSsr = ({ children }: {children: ReactNode}) => {
     }, []);
 
     if (inited) return <>{children}</>;
-    return null;
+    return <>{fallback}</>;
 };
 
 export default NoSsr;
