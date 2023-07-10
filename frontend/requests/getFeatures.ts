@@ -8,9 +8,9 @@ export type FeatureResponse = components['schemas']['FeatureListResponse']
 
 
 export async function getFeatures() {
-    const query: FeatureQuery = {
+    const query = {
         populate: 'image',
-    };
+    } satisfies FeatureQuery;
     const data = await api.get('features', { searchParams: query }).json<FeatureResponse>();
 
     const feature = await featuresSchema.parseAsync(data);
