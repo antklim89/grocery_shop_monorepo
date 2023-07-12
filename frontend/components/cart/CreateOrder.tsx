@@ -1,12 +1,12 @@
 'use client';
-import { useReducer } from 'react';
+import { Reducer, useReducer } from 'react';
 
 import { IUser } from '~/types';
 
 
 const CreateOrder = (user: IUser): JSX.Element => {
-    const [{ name, surname, phone, address, email }, setValues] = useReducer(
-        (oldState: IUser, newState: Partial<IUser>) => ({ ...oldState, ...newState }),
+    const [{ name, surname, address, email, phone }, setValues] = useReducer<Reducer<IUser, Partial<IUser>>>(
+        (oldState, newState) => ({ ...oldState, ...newState }),
         user,
     );
 

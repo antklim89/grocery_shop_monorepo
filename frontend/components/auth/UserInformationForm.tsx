@@ -1,20 +1,24 @@
 'use client';
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent, Reducer, useReducer, useState } from 'react';
 
 import Alert from '~/components/utils/Alert';
 import Loading from '~/components/utils/Loading';
+import { UpdateUserBody } from '~/requests';
 import { useAuthStore } from '~/store';
 import { IUser } from '~/types';
 
 
 const UserInformationForm: FC<IUser> = (user) => {
     const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useReducer<Reducer<UpdateUserBody, UpdateUserBody>>(
+        (prev, next) => ({ ...prev, ...next }),
+        { address: '', name: '', phone: '', surname: '' },
+    );
 
     const updateUser = useAuthStore((state) => state.updateUser);
 
     const [errorMessage, setErrorMessage] = useState<string|null>(null);
     const [resultMessage, setResultMessage] = useState<string|null>(null);
-
 
     const handleSaveProfile = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -22,13 +26,7 @@ const UserInformationForm: FC<IUser> = (user) => {
         setResultMessage(null);
         try {
             setLoading(true);
-            const formData = new FormData(e.currentTarget);
-            const name = formData.get('name') as string;
-            const surname = formData.get('surname') as string;
-            const address = formData.get('address') as string;
-            const phone = formData.get('phone') as string;
-
-            await updateUser({ name, surname, address, phone });
+            await updateUser(formData);
             setResultMessage('Profile has been successfully updated');
         } catch (err) {
             if (err instanceof Error) setErrorMessage(err.message);
@@ -48,12 +46,13 @@ const UserInformationForm: FC<IUser> = (user) => {
                     <input
                         autoComplete="given-name"
                         className="form-control"
-                        defaultValue={user.name || ''}
                         id="name"
                         maxLength={200}
                         name="name"
                         pattern="^[a-zA-Z-']*$"
                         type="text"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ name: e.target.name })}
                     />
                     <span className="invalid-feedback">Name is invalid</span>
                 </label>
@@ -71,6 +70,8 @@ const UserInformationForm: FC<IUser> = (user) => {
                         name="surname"
                         pattern="^[a-zA-Z-']*$"
                         type="text"
+                        value={formData.surname}
+                        onChange={(e) => setFormData({ surname: e.target.value })}
                     />
                     <span className="invalid-feedback">Surname password is invalid</span>
                 </label>
@@ -88,6 +89,8 @@ const UserInformationForm: FC<IUser> = (user) => {
                         name="phone"
                         pattern="^[\d-]*$"
                         type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ phone: e.target.value })}
                     />
                     <span className="invalid-feedback">Phone is invalid</span>
                 </label>
@@ -104,6 +107,8 @@ const UserInformationForm: FC<IUser> = (user) => {
                         maxLength={2000}
                         name="address"
                         type="text"
+                        value={formData.address}
+                        onChange={(e) => setFormData({ address: e.target.value })}
                     />
                     <span className="invalid-feedback">Address is invalid</span>
                 </label>
