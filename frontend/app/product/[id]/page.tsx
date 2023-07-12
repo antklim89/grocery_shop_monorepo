@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
+import NotFound from '~/components/common/NotFound';
 import Product from '~/components/products/Product';
-import NotFound from '~/components/utils/NotFound';
 import { getProduct, getProductsPreviews } from '~/requests';
 
 

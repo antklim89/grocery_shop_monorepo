@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import LogoutButton from '~/components/auth/LogoutButton';
-import NoSsr from '~/components/utils/NoSsr';
+import NoSsr from '~/components/common/NoSsr';
 import { useAuthStore } from '~/store';
 import { cls } from '~/utils/cls';
 

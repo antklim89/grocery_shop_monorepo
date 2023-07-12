@@ -1,7 +1,7 @@
 'use client';
 import { FC, FormEvent, useReducer } from 'react';
 
-import Price from '~/components/utils/Price';
+import Price from '~/components/common/Price';
 import { useCartStore } from '~/store';
 import { ICart, IProduct } from '~/types';
 

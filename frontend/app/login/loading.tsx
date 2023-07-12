@@ -1,4 +1,4 @@
-import PageLoading from '~/components/utils/PageLoading';
+import PageLoading from '~/components/common/PageLoading';
 
 
 export default PageLoading;

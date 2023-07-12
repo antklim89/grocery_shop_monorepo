@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { FC, FormEvent, useEffect, useState } from 'react';
 
-import Loading from '~/components/utils/Loading';
+import Loading from '~/components/common/Loading';
 import { useAuthStore } from '~/store';
 
 

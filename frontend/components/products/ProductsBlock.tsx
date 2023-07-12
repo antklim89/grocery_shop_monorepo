@@ -4,7 +4,7 @@ import ProductsList from './ProductsList';
 import SearchProducts from './SearchProducts';
 import SortProducts from './SortProducts';
 
-import Pagination from '~/components/utils/Pagination';
+import Pagination from '~/components/common/Pagination';
 import { getProductsPreviews } from '~/requests';
 
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import StrapiImage from '~/components/utils/StrapiImage';
+import StrapiImage from '~/components/common/StrapiImage';
 import { IStrapiImage } from '~/types';
 import { cls } from '~/utils';
 

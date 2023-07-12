@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { ButtonHTMLAttributes } from 'react';
 
-import NoSsr from '~/components/utils/NoSsr';
+import NoSsr from '~/components/common/NoSsr';
 import { useCartStore } from '~/store';
 
 

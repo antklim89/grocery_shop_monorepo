@@ -1,8 +1,8 @@
 'use client';
 import { FC, FormEvent, Reducer, useReducer, useState } from 'react';
 
-import Alert from '~/components/utils/Alert';
-import Loading from '~/components/utils/Loading';
+import Alert from '~/components/common/Alert';
+import Loading from '~/components/common/Loading';
 import { UpdateUserBody } from '~/requests';
 import { useAuthStore } from '~/store';
 import { IUser } from '~/types';

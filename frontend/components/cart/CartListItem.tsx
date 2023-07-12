@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { FC, memo } from 'react';
 
-import Price from '~/components/utils/Price';
+import Price from '~/components/common/Price';
 import { useCartStore } from '~/store';
 import { ICart } from '~/types';
 

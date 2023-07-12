@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import CartListItem from './CartListItem';
 
-import Price from '~/components/utils/Price';
+import Price from '~/components/common/Price';
 import { useAuthStore, useCartStore } from '~/store';
 
 

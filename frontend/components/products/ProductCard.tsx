@@ -2,12 +2,12 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
-import NoSsr from '../utils/NoSsr';
+import NoSsr from '../common/NoSsr';
 
 import CatalogItem from './CatalogItem';
 
-import Price from '~/components/utils/Price';
-import StrapiImage from '~/components/utils/StrapiImage';
+import Price from '~/components/common/Price';
+import StrapiImage from '~/components/common/StrapiImage';
 import { CATEGORY_QUERY_NAME, COUNTRY_QUERY_NAME } from '~/constants';
 import { useCartStore } from '~/store';
 import { IProductPreview } from '~/types';

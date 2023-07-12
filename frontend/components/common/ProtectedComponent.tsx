@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { FC, ReactElement, ReactNode } from 'react';
 
-import NotFound from '~/components/utils/NotFound';
+import NotFound from '~/components/common/NotFound';
 import { getMe } from '~/requests';
 
 

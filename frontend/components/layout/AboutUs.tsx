@@ -1,5 +1,5 @@
-import LazyReactMarkdown from '~/components/utils/LazyReactMarkdown';
-import StrapiImage from '~/components/utils/StrapiImage';
+import LazyReactMarkdown from '~/components/common/LazyReactMarkdown';
+import StrapiImage from '~/components/common/StrapiImage';
 import { getAbout } from '~/requests';
 
 
