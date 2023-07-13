@@ -3,9 +3,9 @@
 const Footer = (): JSX.Element => {
     return (
         <footer className="bg-dark navbar mt-4">
-            <p className="container text-white">
+            <div className="container flex text-white">
                 <span>
-                    @ 2021 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    &copy;{new Date().getFullYear()} Grocery shop
                 </span>
                 <span>
                     <a href="http://twitter.com" rel="noopener noreferrer" target="_blank">
@@ -18,7 +18,7 @@ const Footer = (): JSX.Element => {
                         <i className="bi bi-telegram px-2 text-white" />
                     </a>
                 </span>
-            </p>
+            </div>
         </footer>
     );
 };
