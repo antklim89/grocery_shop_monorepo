@@ -120,7 +120,7 @@ async function generateProducts(images: Image[], categories: { id: number; }[], 
         data: {
             name: faker.commerce.productName(),
             description: faker.lorem.paragraphs(3),
-            price: parseFloat(faker.commerce.price(100, 1000, 2)),
+            price: parseFloat(random(100, 1000, true).toFixed(2)),
             unit: sample(units),
             discount: Math.random() > 0.3 ? random(10, 60, false) : 0,
             createdAt: date,
