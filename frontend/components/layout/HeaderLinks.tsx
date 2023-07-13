@@ -38,8 +38,8 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                     ? (
                         <>
                             <li className="nav-item me-1">
-                                <Link className="nav-link btn btn-link" href="/profile">
-                                    Profile
+                                <Link className={`nav-link ${pathname === '/profile' ? 'active' : ''}`} href="/profile">
+                                    PROFILE
                                 </Link>
                             </li>
                             <li className="nav-item me-5">
