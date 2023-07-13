@@ -18,7 +18,7 @@ const ProfilePage = async () => {
     const user = token ? await getMe(token).catch(() => null) : null;
 
     if (!user) return null;
-    return <Profile />;
+    return <Profile user={user} />;
 };
 
 

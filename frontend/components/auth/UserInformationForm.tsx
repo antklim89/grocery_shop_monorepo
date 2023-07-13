@@ -1,5 +1,5 @@
 'use client';
-import { FC, FormEvent, Reducer, useReducer, useState } from 'react';
+import { FormEvent, Reducer, useReducer, useState } from 'react';
 
 import Alert from '~/components/common/Alert';
 import Loading from '~/components/common/Loading';
@@ -8,11 +8,11 @@ import { useAuthStore } from '~/store';
 import { IUser } from '~/types';
 
 
-const UserInformationForm: FC<IUser> = (user) => {
+const UserInformationForm = ({ user }: {user: IUser}) => {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useReducer<Reducer<UpdateUserBody, UpdateUserBody>>(
         (prev, next) => ({ ...prev, ...next }),
-        { address: '', name: '', phone: '', surname: '' },
+        { address: user.address || '', name: user.name || '', phone: user.phone || '', surname: user.surname || '' },
     );
 
     const updateUser = useAuthStore((state) => state.updateUser);
@@ -52,7 +52,7 @@ const UserInformationForm: FC<IUser> = (user) => {
                         pattern="^[a-zA-Z-']*$"
                         type="text"
                         value={formData.name}
-                        onChange={(e) => setFormData({ name: e.target.name })}
+                        onChange={(e) => setFormData({ name: e.target.value })}
                     />
                     <span className="invalid-feedback">Name is invalid</span>
                 </label>
@@ -64,7 +64,6 @@ const UserInformationForm: FC<IUser> = (user) => {
                     <input
                         autoComplete="family-name"
                         className="form-control"
-                        defaultValue={user.surname || ''}
                         id="surname"
                         maxLength={200}
                         name="surname"
@@ -83,7 +82,6 @@ const UserInformationForm: FC<IUser> = (user) => {
                     <input
                         autoComplete="tel"
                         className="form-control"
-                        defaultValue={user.phone || ''}
                         id="phone"
                         maxLength={200}
                         name="phone"
@@ -102,7 +100,6 @@ const UserInformationForm: FC<IUser> = (user) => {
                     <input
                         autoComplete="address-line1"
                         className="form-control"
-                        defaultValue={user.address || ''}
                         id="address"
                         maxLength={2000}
                         name="address"

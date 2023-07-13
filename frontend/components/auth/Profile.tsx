@@ -1,20 +1,14 @@
-'use client';
-import { FC, memo } from 'react';
-
 import ChangePassword from './ChangePassword';
 import UserInformationForm from './UserInformationForm';
 
-import { useAuthStore } from '~/store';
+import { IUser } from '~/types';
 
 
-const Profile: FC = () => {
-    const user = useAuthStore((state) => state.user);
-
-    if (!user) return null;
+const Profile = async ({ user }: {user: IUser}) => {
     return (
         <div className="container">
             <h1 className="text-center mb-4">
-                {user.username} profile
+                My profile
             </h1>
 
             <div className="row">
@@ -54,7 +48,7 @@ const Profile: FC = () => {
                         id="user-info"
                         role="tabpanel"
                     >
-                        <UserInformationForm {...user} />
+                        <UserInformationForm user={user} />
                     </div>
                     <div
                         aria-labelledby="change-profile-tab"
@@ -67,8 +61,7 @@ const Profile: FC = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 
-export default memo(Profile);
+export default Profile;
