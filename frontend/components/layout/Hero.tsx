@@ -27,7 +27,7 @@ const Hero = async () => {
                     </ReactMarkdown>
                     <Link passHref href="/product">
                         <button className="btn btn-outline-primary btn-lg d-block mx-auto" type="button">
-                            Show Products
+                            Show All Products
                         </button>
                     </Link>
                 </div>
