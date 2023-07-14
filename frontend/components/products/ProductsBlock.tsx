@@ -12,7 +12,7 @@ const ProductsBlock = async ({ searchParams }: { searchParams: Record<string, st
     const { products, pagination } = await getProductsPreviews(searchParams);
 
     return (
-        <div className="container">
+        <div className="container my-4">
             <div className="d-block d-xl-none">
                 <button
                     className="btn btn-primary mb-2"
