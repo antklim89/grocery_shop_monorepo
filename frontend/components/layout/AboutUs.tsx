@@ -1,4 +1,5 @@
-import LazyReactMarkdown from '~/components/common/LazyReactMarkdown';
+import ReactMarkdown from 'react-markdown';
+
 import StrapiImage from '~/components/common/StrapiImage';
 import { getAbout } from '~/requests';
 
@@ -7,7 +8,7 @@ const About = async () => {
     const { body, image } = await getAbout();
 
     return (
-        <section className="container mb-5">
+        <section className="container my-4">
             <div className="row">
                 <div className="col-lg-6">
                     <StrapiImage
@@ -18,7 +19,7 @@ const About = async () => {
                     />
                 </div>
                 <div className="col-lg-6">
-                    <LazyReactMarkdown>{body}</LazyReactMarkdown>
+                    <ReactMarkdown>{body}</ReactMarkdown>
                 </div>
             </div>
         </section>
