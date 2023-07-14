@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
-import LazyReactMarkdown from '~/components/common/LazyReactMarkdown';
 import StrapiImage from '~/components/common/StrapiImage';
 import { getHero } from '~/requests';
 
@@ -20,11 +20,11 @@ const Hero = async () => {
                         width={800}
                     />
                 </div>
-                <div className="col-md-6 col-12 p-0 p-md-1 mb-2 d-flex flex-column justify-content-center">
+                <div className="col-md-6 col-12 p-0 p-md-1 mb-2 d-flex flex-column justify-content-center" style={{ textAlign: 'justify' }}>
                     <h1 className="text-center fs-1">{title}</h1>
-                    <LazyReactMarkdown className="text-center d-none d-lg-block fs-4">
+                    <ReactMarkdown className="text-justify fs-4 mx-3">
                         {text}
-                    </LazyReactMarkdown>
+                    </ReactMarkdown>
                     <Link passHref href="/product">
                         <button className="btn btn-outline-primary btn-lg d-block mx-auto" type="button">
                             Show Products
