@@ -22,17 +22,17 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                 className={cls('navbar-nav justify-content-end flex-grow-1 pe-3', className)}
             >
                 <li className="nav-item" data-target=".navbar-collapse.show" data-toggle="collapse">
-                    <Link passHref className={`nav-link ${pathname === '/' ? 'active' : ''}`} href="/" >
+                    <Link className={`nav-link ${pathname === '/' ? 'active' : ''}`} href="/" >
                         HOME
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link passHref className={`nav-link ${pathname === '/product' ? 'active' : ''}`} href="/product">
+                    <Link className={`nav-link ${pathname === '/product' ? 'active' : ''}`} href="/product">
                         PRODUCTS
                     </Link>
                 </li>
                 <li className="nav-item me-auto">
-                    <Link passHref className={`nav-link ${pathname === '/about' ? 'active' : ''}`} href="/about">
+                    <Link className={`nav-link ${pathname === '/about' ? 'active' : ''}`} href="/about">
                         ABOUT
                     </Link>
                 </li>
@@ -46,9 +46,7 @@ const HeaderLinks = ({ className }: HeaderLinksProps): JSX.Element => {
                                     </Link>
                                 </li>
                                 <li className="nav-item me-5">
-                                    <LogoutButton
-                                        className="nav-link"
-                                    />
+                                    <LogoutButton className="nav-link" />
                                 </li>
                             </>
                         )
