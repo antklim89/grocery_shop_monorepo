@@ -13,7 +13,7 @@ const Header = async () => {
                     <Link passHref className="navbar-brand me-auto" href="/">
                         GROCERY SHOP
                     </Link>
-                    <CartButton />
+                    <CartButton className="d-block d-lg-none" />
                     <button
                         aria-controls="navbarToggler"
                         aria-expanded="false"
@@ -26,6 +26,7 @@ const Header = async () => {
                         <span className="navbar-toggler-icon" />
                     </button>
                     <HeaderLinks />
+                    <CartButton className="d-none d-lg-block" />
                 </div>
             </nav>
         </header>
