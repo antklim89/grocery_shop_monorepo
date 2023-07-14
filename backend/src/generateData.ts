@@ -114,13 +114,13 @@ async function generateProducts(images: Image[], categories: { id: number; }[], 
     const prevProducts = await strapi.db.query('api::product.product').findMany({});
     if (prevProducts.length > 0) return prevProducts;
 
-    const date = faker.date.between('2002-01-01T10:30:00.354Z', '2023-01-29T18:38:51.354Z');
+    const date = faker.date.between({ from: '2002-01-01T10:30:00.354Z', to: '2023-01-29T18:38:51.354Z' });
     const units = ['kilogram', 'gram', 'liter', 'mililiter', 'piece', 'ton'];
     return Promise.all(times(PRODUCTS_COUNT, () => strapi.db.query('api::product.product').create({
         data: {
             name: faker.commerce.productName(),
             description: faker.lorem.paragraphs(3),
-            price: parseFloat(random(100, 1000, true).toFixed(2)),
+            price: faker.commerce.price({ min: 100, max: 1000, dec: 2 }),
             unit: sample(units),
             discount: Math.random() > 0.3 ? random(10, 60, false) : 0,
             createdAt: date,
